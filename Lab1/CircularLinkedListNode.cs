@@ -2,12 +2,12 @@
 
 public class CircularLinkedListNode<T>
 {
-    private T data;
-    private CircularLinkedListNode<T>? next;
+    public T Data;
+    public CircularLinkedListNode<T>? Next;
 
-    public CircularLinkedListNode(T d)
+    public CircularLinkedListNode(T data)
     {
-        data = d;
-        next = null;
+        Data = data;
+        Next = null;
     }
 }
