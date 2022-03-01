@@ -1,2 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Lab1.CircularLinkedList;
+
+namespace Labs;
+
+class Program
+{
+	static void Main()
+	{
+		CircularLinkedList<int> list = new();
+		LinkedList<int> list2 = new();
+	}
+}
