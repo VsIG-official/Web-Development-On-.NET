@@ -3,23 +3,17 @@ using System.Collections;
 
 namespace Lab1.CircularLinkedList;
 
-public class CircularLinkedList<T> : ICollection<T>, ICollection, IEnumerable<T>
+public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 {
 	public CircularLinkedListNode<T>? Head;
-	//public CircularLinkedListNode<T>? Tail;
 
 	public int Count { get; private set; }
 
-	public bool IsReadOnly => throw new NotImplementedException();
-
-	public bool IsSynchronized => throw new NotImplementedException();
-
-	public object SyncRoot => throw new NotImplementedException();
+	public bool IsReadOnly => false;
 
 	public CircularLinkedList()
 	{
 		Head = null;
-		//Tail = null;
 	}
 
 	public CircularLinkedList(T item)
@@ -33,24 +27,13 @@ public class CircularLinkedList<T> : ICollection<T>, ICollection, IEnumerable<T>
 
 		Head = node;
 		Head.Next = node;
-		//Tail = node;
-		//Tail.Next = node;
 
 		Count++;
 	}
 
-	public void Add(T item)
-	{
-		throw new NotImplementedException();
-	}
 
 	public void AddFirst(T item)
 	{
-		CircularLinkedListNode<T> node = new(item);
-
-		node.Next = Head;
-		Head = node;
-
 		if (Count == 0)
 		{
 			Head = node;
@@ -78,7 +61,7 @@ public class CircularLinkedList<T> : ICollection<T>, ICollection, IEnumerable<T>
 		throw new NotImplementedException();
 	}
 
-	public void CopyTo(Array array, int index)
+	public bool Remove(T item)
 	{
 		throw new NotImplementedException();
 	}
@@ -94,19 +77,8 @@ public class CircularLinkedList<T> : ICollection<T>, ICollection, IEnumerable<T>
 		}
 	}
 
-	IEnumerator<T> IEnumerable<T>.GetEnumerator()
-	{
-		return (IEnumerator<T>)GetEnumerator();
-	}
-
-
-	public bool Remove(T item)
-	{
-		throw new NotImplementedException();
-	}
-
 	IEnumerator IEnumerable.GetEnumerator()
 	{
-		throw new NotImplementedException();
+		return GetEnumerator();
 	}
 }
