@@ -36,14 +36,22 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	{
 		if (Count == 0)
 		{
-			Head = node;
-			//Tail = node;
-			Count++;
+			SetHead(item);
+			return;
 		}
 
-		//Tail.Next = node;
-		//Tail = node;
+		var node = new CircularLinkedListNode<T>(item)
+		{
+			Next = Head
+		};
+
+		Head = node;
 		Count++;
+	}
+
+	public void Add(T item)
+	{
+		throw new NotImplementedException();
 	}
 
 	public void Clear()
@@ -66,14 +74,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		throw new NotImplementedException();
 	}
 
-
-	public IEnumerator GetEnumerator()
+	public IEnumerator<T> GetEnumerator()
 	{
-		var current = Head;
-		while(current != null)
+		var node = Head;
+
+		for (var i = 0; i < Count; i++)
 		{
-			yield return current;
-			current = current.Next;
+			yield return node.Data;
+			node = node.Next;
 		}
 	}
 
