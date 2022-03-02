@@ -3,10 +3,10 @@ using System.Collections;
 
 namespace Lab1.CircularLinkedList;
 
-public class CircularLinkedList<T> : ICollection<T>, ICollection
+public class CircularLinkedList<T> : ICollection<T>, ICollection, IEnumerable<T>
 {
 	public CircularLinkedListNode<T>? Head;
-	public CircularLinkedListNode<T>? Last;
+	//public CircularLinkedListNode<T>? Tail;
 
 	public int Count { get; private set; }
 
@@ -19,7 +19,24 @@ public class CircularLinkedList<T> : ICollection<T>, ICollection
 	public CircularLinkedList()
 	{
 		Head = null;
-		Last = null;
+		//Tail = null;
+	}
+
+	public CircularLinkedList(T item)
+	{
+		SetHead(item);
+	}
+
+	private void SetHead(T item)
+	{
+		var node = new CircularLinkedListNode<T>(item);
+
+		Head = node;
+		Head.Next = node;
+		//Tail = node;
+		//Tail.Next = node;
+
+		Count++;
 	}
 
 	public void Add(T item)
@@ -34,20 +51,15 @@ public class CircularLinkedList<T> : ICollection<T>, ICollection
 		node.Next = Head;
 		Head = node;
 
-		if (Last == null)
+		if (Count == 0)
 		{
-			CircularLinkedListNode<T> tempNode = Head;
-
-			while (tempNode.Next != null)
-			{
-				tempNode = tempNode.Next;
-			}
-
-			Last = tempNode;
+			Head = node;
+			//Tail = node;
+			Count++;
 		}
 
-		Last.Next = Head;
-
+		//Tail.Next = node;
+		//Tail = node;
 		Count++;
 	}
 
@@ -71,10 +83,22 @@ public class CircularLinkedList<T> : ICollection<T>, ICollection
 		throw new NotImplementedException();
 	}
 
-	public IEnumerator<T> GetEnumerator()
+
+	public IEnumerator GetEnumerator()
 	{
-		throw new NotImplementedException();
+		var current = Head;
+		while(current != null)
+		{
+			yield return current;
+			current = current.Next;
+		}
 	}
+
+	IEnumerator<T> IEnumerable<T>.GetEnumerator()
+	{
+		return (IEnumerator<T>)GetEnumerator();
+	}
+
 
 	public bool Remove(T item)
 	{

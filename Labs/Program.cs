@@ -13,6 +13,18 @@ class Program
 		list.AddFirst(3);
 		list.AddFirst(4);
 
+		LinkedList<int> l = new();
+
+		l.AddFirst(1);
+		l.AddFirst(2);
+		l.AddFirst(3);
+		l.AddFirst(4);
+
+		foreach (var item in list)
+		{
+			Console.WriteLine(item);
+		}
+
 		Console.WriteLine();
 	}
 }
