@@ -29,6 +29,8 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 		Head = node;
 		Head.Next = node;
+		Tail = node;
+		Tail.Next = node;
 
 		Count++;
 	}
@@ -54,7 +56,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 		for (var i = 0; i < Count; i++)
 		{
-
 			if (i == Count - 1)
 			{
 				Tail = currentNode;
