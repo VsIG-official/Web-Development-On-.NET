@@ -1,12 +1,12 @@
-﻿using Lab1.Node;
+﻿using Lab1.CircularLinkedListNode;
 using System.Collections;
 
 namespace Lab1.CircularLinkedList;
 
 public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 {
-	public CircularLinkedListNode<T>? Head;
-	public CircularLinkedListNode<T>? Tail;
+	public CircularLinkedListNode<T>? Head { get; private set; }
+	public CircularLinkedListNode<T>? Tail { get; private set; }
 
 	public int Count { get; private set; }
 
@@ -15,6 +15,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	public CircularLinkedList()
 	{
 		Head = null;
+		Tail = null;
 	}
 
 	public CircularLinkedList(T item)

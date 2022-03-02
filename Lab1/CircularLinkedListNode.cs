@@ -1,4 +1,4 @@
-﻿namespace Lab1.Node;
+﻿namespace Lab1.CircularLinkedListNode;
 
 public class CircularLinkedListNode<T>
 {

@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Lab1\Lab1.csproj" />
+  </ItemGroup>
+
 </Project>
