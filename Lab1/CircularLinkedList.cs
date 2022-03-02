@@ -6,6 +6,7 @@ namespace Lab1.CircularLinkedList;
 public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 {
 	public CircularLinkedListNode<T>? Head;
+	public CircularLinkedListNode<T>? Tail;
 
 	public int Count { get; private set; }
 
@@ -31,7 +32,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		Count++;
 	}
 
-
 	public void AddFirst(T item)
 	{
 		if (Count == 0)
@@ -46,7 +46,23 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		};
 
 		Head = node;
+
 		Count++;
+
+		var currentNode = Head;
+
+		for (var i = 0; i < Count; i++)
+		{
+
+			if (i == Count - 1)
+			{
+				Tail = currentNode;
+			}
+
+			currentNode = currentNode.Next;
+		}
+
+		Tail.Next = Head;
 	}
 
 	public void Add(T item)

@@ -18,6 +18,6 @@ class Program
 			Console.WriteLine(item);
 		}
 
-		Console.WriteLine();
+		Console.WriteLine("////");
 	}
 }
