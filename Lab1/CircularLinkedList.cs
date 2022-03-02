@@ -20,10 +20,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public CircularLinkedList(T item)
 	{
-		SetHead(item);
+		SetFirstElement(item);
 	}
 
-	private void SetHead(T item)
+	private void SetFirstElement(T item)
 	{
 		var node = new CircularLinkedListNode<T>(item);
 
@@ -39,7 +39,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	{
 		if (Count == 0)
 		{
-			SetHead(item);
+			SetFirstElement(item);
 			return;
 		}
 
