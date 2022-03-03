@@ -392,5 +392,49 @@ public class CircularLinkedListTests
         Assert.Null(actualTail);
     }
 
+    //[Theory]
+    //[MemberData(nameof(IntTestData))]
+    //public void Clear_ConstructorWithParameters_Add_IntType_ReturnsCorrectValues
+    //(int expectedData)
+    //{
+    //    // Arrange
+    //    var expectedCount = 0;
+    //    var circularLinkedList = new CircularLinkedList<int>();
+    //    circularLinkedList.Add(expectedData);
+    //    circularLinkedList.Clear();
+
+    //    // Act
+    //    var actualCount = circularLinkedList.Count;
+    //    var actualHead = circularLinkedList.Head;
+    //    var actualTail = circularLinkedList.Tail;
+
+    //    // Assert
+    //    Assert.Equal(expectedCount, actualCount);
+    //    Assert.Null(actualHead);
+    //    Assert.Null(actualTail);
+    //}
+
+    //[Theory]
+    //[MemberData(nameof(StringTestData))]
+    //public void Clear_ConstructorWithParameters_Add_StringType_ReturnsCorrectValues
+    // (string expectedData)
+    //{
+    //    // Arrange
+    //    var expectedCount = 0;
+    //    var circularLinkedList = new CircularLinkedList<string>();
+    //    circularLinkedList.Add(expectedData);
+    //    circularLinkedList.Clear();
+
+    //    // Act
+    //    var actualCount = circularLinkedList.Count;
+    //    var actualHead = circularLinkedList.Head;
+    //    var actualTail = circularLinkedList.Tail;
+
+    //    // Assert
+    //    Assert.Equal(expectedCount, actualCount);
+    //    Assert.Null(actualHead);
+    //    Assert.Null(actualTail);
+    //}
+
     #endregion Clear
 }
