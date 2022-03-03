@@ -25,7 +25,8 @@ public class CircularLinkedListTests
 		new object[] { "汉字" },
 		new object[] { "الْعَرَبِيَّة" },
 		new object[] { "👾🤓😎🥸🤩🥳" },
-	};
+		new object[] { "█Ã░╬ðØ" },
+    };
 
     public static IEnumerable<object[]> IntArrayTestData => new List<object[]>
     {
@@ -44,6 +45,7 @@ public class CircularLinkedListTests
         new object[] { "汉字", "漢字" },
         new object[] { "الْعَرَبِيَّة", "الْحُرُوف" },
         new object[] { "👾🤓😎🥸🤩🥳", "🧳🌂☂️🧵🧶👓" },
+        new object[] { "█Ã░╬ðØ", "®ßƒ≡¾Æ" },
     };
 
     #endregion PremadeData
@@ -134,7 +136,8 @@ public class CircularLinkedListTests
 
     [Theory]
 	[MemberData(nameof(IntTestData))]
-	public void AddFirst_ConstructorNoParameters_IntType_ReturnsCorrectValues(int expectedData)
+	public void AddFirst_ConstructorNoParameters_IntType_ReturnsCorrectValues
+        (int expectedData)
 	{
 		// Arrange
 		var expectedCount = 1;
@@ -154,7 +157,8 @@ public class CircularLinkedListTests
 
 	[Theory]
 	[MemberData(nameof(StringTestData))]
-	public void AddFirst_ConstructorNoParameters_StringType_ReturnsCorrectValues(string expectedData)
+	public void AddFirst_ConstructorNoParameters_StringType_ReturnsCorrectValues
+        (string expectedData)
 	{
 		// Arrange
 		var expectedCount = 1;
@@ -174,8 +178,8 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(IntArrayTestData))]
-    public void AddFirst_ConstructorWithParameter_IntType_ReturnsCorrectValues(int expectedHead,
-        int expectedTail)
+    public void AddFirst_ConstructorWithParameter_IntType_ReturnsCorrectValues
+        (int expectedHead, int expectedTail)
     {
         // Arrange
         var expectedCount = 2;
@@ -195,8 +199,8 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(StringArrayTestData))]
-    public void AddFirst_ConstructorWithParameter_StringType_ReturnsCorrectValues(string expectedHead,
-    string expectedTail)
+    public void AddFirst_ConstructorWithParameter_StringType_ReturnsCorrectValues
+        (string expectedHead, string expectedTail)
     {
         // Arrange
         var expectedCount = 2;
