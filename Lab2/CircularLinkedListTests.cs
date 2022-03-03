@@ -22,16 +22,35 @@ public class CircularLinkedListTests
 		new object[] { "Паляниця" },
 		new object[] { "Русский военный корабль" },
 		new object[] { "European Union" },
-		new object[] { "汉字 and 漢字" },
+		new object[] { "汉字" },
 		new object[] { "الْعَرَبِيَّة" },
 		new object[] { "👾🤓😎🥸🤩🥳" },
 	};
 
-	#endregion PremadeData
+    public static IEnumerable<object[]> IntArrayTestData => new List<object[]>
+    {
+        new object[] { 0, 10 },
+        new object[] { 1, 11 },
+        new object[] { -1, -11 },
+        new object[] { int.MaxValue, int.MaxValue - 10 },
+        new object[] { int.MinValue, int.MinValue + 10 },
+    };
 
-	#region ConstructorWithoutParameters
+    public static IEnumerable<object[]> StringArrayTestData => new List<object[]>
+    {
+        new object[] { "Паляниця", "Полуниця" },
+        new object[] { "Русский военный корабль", "Иди далеко" },
+        new object[] { "European Union", "NATO" },
+        new object[] { "汉字", "漢字" },
+        new object[] { "الْعَرَبِيَّة", "الْحُرُوف" },
+        new object[] { "👾🤓😎🥸🤩🥳", "🧳🌂☂️🧵🧶👓" },
+    };
 
-	[Fact]
+    #endregion PremadeData
+
+    #region Constructors
+
+    [Fact]
 	public void Constructor_NoParameters_IntType_ReturnsCorrectValues()
 	{
 		// Arrange
@@ -71,55 +90,51 @@ public class CircularLinkedListTests
 		Assert.False(actualIsReadOnly);
 	}
 
-	#endregion ConstructorWithoutParameters
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void Constructor_WithParameter_IntType_ReturnsCorrectValues(int expectedData)
+    {
+        // Arrange
+        var expectedCount = 1;
+        var circularLinkedList = new CircularLinkedList<int>(expectedData);
 
-	#region ConstructorWithParameters
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
 
-	[Theory]
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedData, actualHeadData);
+        Assert.Equal(expectedData, actualTailData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void Constructor_WithParameter_StringType_ReturnsCorrectValues(string expectedData)
+    {
+        // Arrange
+        var expectedCount = 1;
+        var circularLinkedList = new CircularLinkedList<string>(expectedData);
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedData, actualHeadData);
+        Assert.Equal(expectedData, actualTailData);
+    }
+
+    #endregion Constructors
+
+    #region AddFirst
+
+    [Theory]
 	[MemberData(nameof(IntTestData))]
-	public void Constructor_WithParameter_IntType_ReturnsCorrectValues(int expectedData)
-	{
-		// Arrange
-		var expectedCount = 1;
-		var circularLinkedList = new CircularLinkedList<int>(expectedData);
-
-		// Act
-		var actualCount = circularLinkedList.Count;
-		var actualHeadData = circularLinkedList.Head.Data;
-		var actualTailData = circularLinkedList.Tail.Data;
-
-		// Assert
-		Assert.Equal(expectedCount, actualCount);
-		Assert.Equal(expectedData, actualHeadData);
-		Assert.Equal(expectedData, actualTailData);
-	}
-
-	[Theory]
-	[MemberData(nameof(StringTestData))]
-	public void Constructor_WithParameter_StringType_ReturnsCorrectValues(string expectedData)
-	{
-		// Arrange
-		var expectedCount = 1;
-		var circularLinkedList = new CircularLinkedList<string>(expectedData);
-
-		// Act
-		var actualCount = circularLinkedList.Count;
-		var actualHeadData = circularLinkedList.Head.Data;
-		var actualTailData = circularLinkedList.Tail.Data;
-
-		// Assert
-		Assert.Equal(expectedCount, actualCount);
-		Assert.Equal(expectedData, actualHeadData);
-		Assert.Equal(expectedData, actualTailData);
-	}
-
-	#endregion ConstructorWithParameters
-
-	#region AddFirst
-
-	[Theory]
-	[MemberData(nameof(IntTestData))]
-	public void AddFirst_EmptyConstructor_IntType_ReturnsCorrectValues(int expectedData)
+	public void AddFirst_ConstructorNoParameters_IntType_ReturnsCorrectValues(int expectedData)
 	{
 		// Arrange
 		var expectedCount = 1;
@@ -139,7 +154,7 @@ public class CircularLinkedListTests
 
 	[Theory]
 	[MemberData(nameof(StringTestData))]
-	public void AddFirst_EmptyConstructor_StringType_ReturnsCorrectValues(string expectedData)
+	public void AddFirst_ConstructorNoParameters_StringType_ReturnsCorrectValues(string expectedData)
 	{
 		// Arrange
 		var expectedCount = 1;
@@ -156,6 +171,48 @@ public class CircularLinkedListTests
 		Assert.Equal(expectedData, actualHeadData);
 		Assert.Equal(expectedData, actualTailData);
 	}
-	
-	#endregion AddFirst
+
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void AddFirst_ConstructorWithParameter_IntType_ReturnsCorrectValues(int expectedHead,
+        int expectedTail)
+    {
+        // Arrange
+        var expectedCount = 2;
+        var circularLinkedList = new CircularLinkedList<int>(expectedTail);
+        circularLinkedList.AddFirst(expectedHead);
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedHead, actualHeadData);
+        Assert.Equal(expectedTail, actualTailData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void AddFirst_ConstructorWithParameter_StringType_ReturnsCorrectValues(string expectedHead,
+    string expectedTail)
+    {
+        // Arrange
+        var expectedCount = 2;
+        var circularLinkedList = new CircularLinkedList<string>(expectedTail);
+        circularLinkedList.AddFirst(expectedHead);
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedHead, actualHeadData);
+        Assert.Equal(expectedTail, actualTailData);
+    }
+
+    #endregion AddFirst
 }
