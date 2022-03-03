@@ -1,4 +1,5 @@
 ﻿using Lab1.CircularLinkedList;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Lab2;
@@ -6,6 +7,25 @@ namespace Lab2;
 public class CircularLinkedListTests
 {
 	#region PremadeData
+
+	public static IEnumerable<object[]> IntTestData => new List<object[]>
+	{
+		new object[] { 0 },
+		new object[] { 1 },
+		new object[] { -1 },
+		new object[] { int.MaxValue },
+		new object[] { int.MinValue },
+	};
+
+	public static IEnumerable<object[]> StringTestData => new List<object[]>
+	{
+		new object[] { "Паляниця" },
+		new object[] { "Русский военный корабль" },
+		new object[] { "European Union" },
+		new object[] { "汉字 and 漢字" },
+		new object[] { "الْعَرَبِيَّة" },
+		new object[] { "👾🤓😎🥸🤩🥳" },
+	};
 
 	#endregion PremadeData
 
@@ -56,12 +76,8 @@ public class CircularLinkedListTests
 	#region ConstructorWithParameters
 
 	[Theory]
-	[InlineData(0)]
-	[InlineData(-1)]
-	[InlineData(1)]
-	[InlineData(int.MinValue)]
-	[InlineData(int.MaxValue)]
-	public void Constructor_GenericParameter_IntType_ReturnsCorrectValues(int expectedData)
+	[MemberData(nameof(IntTestData))]
+	public void Constructor_WithParameter_IntType_ReturnsCorrectValues(int expectedData)
 	{
 		// Arrange
 		var expectedCount = 1;
@@ -79,13 +95,8 @@ public class CircularLinkedListTests
 	}
 
 	[Theory]
-	[InlineData("Паляниця")]
-	[InlineData("Русский военный корабль")]
-	[InlineData("European Union")]
-	[InlineData("汉字 and 漢字")]
-	[InlineData("الْعَرَبِيَّة")]
-	[InlineData("👾🤓😎🥸🤩🥳")]
-	public void Constructor_GenericParameter_StringType_ReturnsCorrectValues(string expectedData)
+	[MemberData(nameof(StringTestData))]
+	public void Constructor_WithParameter_StringType_ReturnsCorrectValues(string expectedData)
 	{
 		// Arrange
 		var expectedCount = 1;
@@ -107,11 +118,7 @@ public class CircularLinkedListTests
 	#region AddFirst
 
 	[Theory]
-	[InlineData(0)]
-	[InlineData(-1)]
-	[InlineData(1)]
-	[InlineData(int.MinValue)]
-	[InlineData(int.MaxValue)]
+	[MemberData(nameof(IntTestData))]
 	public void AddFirst_EmptyConstructor_IntType_ReturnsCorrectValues(int expectedData)
 	{
 		// Arrange
@@ -131,12 +138,7 @@ public class CircularLinkedListTests
 	}
 
 	[Theory]
-	[InlineData("Паляниця")]
-	[InlineData("Русский военный корабль")]
-	[InlineData("European Union")]
-	[InlineData("汉字 and 漢字")]
-	[InlineData("الْعَرَبِيَّة")]
-	[InlineData("👾🤓😎🥸🤩🥳")]
+	[MemberData(nameof(StringTestData))]
 	public void AddFirst_EmptyConstructor_StringType_ReturnsCorrectValues(string expectedData)
 	{
 		// Arrange
