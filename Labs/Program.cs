@@ -2,22 +2,24 @@
 
 namespace Labs;
 
-class Program
+internal class Program
 {
-	static void Main()
+    private static void Main()
 	{
 		CircularLinkedList<int> list = new();
 
-		list.AddFirst(1);
-		list.AddFirst(2);
-		list.AddFirst(3);
-		list.AddFirst(4);
+        list.AddFirst(1);
+        list.AddFirst(2);
+        list.AddFirst(3);
+        list.AddFirst(4);
 
-		foreach (var item in list)
+        foreach (var item in list)
 		{
 			Console.WriteLine(item);
 		}
 
-		Console.WriteLine("////");
+        list.Clear();
+
+        Console.WriteLine("////");
 	}
 }

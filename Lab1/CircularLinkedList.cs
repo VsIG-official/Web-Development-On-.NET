@@ -20,10 +20,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public CircularLinkedList(T item)
 	{
-		SetHead(item);
+		SetFirstElement(item);
 	}
 
-	private void SetHead(T item)
+	private void SetFirstElement(T item)
 	{
 		var node = new CircularLinkedListNode<T>(item);
 
@@ -35,11 +35,37 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		Count++;
 	}
 
-	public void AddFirst(T item)
+    public void Add(T item)
+    {
+        //if (IsEmpty())
+        //{
+        //    SetFirstElement(item);
+        //    return;
+        //}
+
+        //Tail = new CircularLinkedListNode<T>(item)
+        //{
+        //    Next = Head
+        //};
+
+        //Count++;
+
+        //var current = Head;
+
+        //for (var i = 0; i < Count - 1; i++)
+        //{
+        //    if (current != Head && )
+        //    {
+
+        //    }
+        //}
+    }
+
+    public void AddFirst(T item)
 	{
 		if (IsEmpty())
 		{
-			SetHead(item);
+			SetFirstElement(item);
 			return;
 		}
 
@@ -80,14 +106,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         Tail.Next = Head;
     }
 
-	public void Add(T item)
-	{
-		throw new NotImplementedException();
-	}
-
 	public void Clear()
 	{
-		throw new NotImplementedException();
+        Head = Tail = null;
+        Count = 0;
 	}
 
 	public bool Contains(T item)
