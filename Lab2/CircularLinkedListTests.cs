@@ -132,6 +132,94 @@ public class CircularLinkedListTests
 
     #endregion Constructors
 
+    #region Add
+
+    //[Theory]
+    //[MemberData(nameof(IntTestData))]
+    //public void AddFirst_ConstructorNoParameters_IntType_ReturnsCorrectValues
+    //    (int expectedData)
+    //{
+    //    // Arrange
+    //    var expectedCount = 1;
+    //    var circularLinkedList = new CircularLinkedList<int>();
+    //    circularLinkedList.AddFirst(expectedData);
+
+    //    // Act
+    //    var actualCount = circularLinkedList.Count;
+    //    var actualHeadData = circularLinkedList.Head.Data;
+    //    var actualTailData = circularLinkedList.Tail.Data;
+
+    //    // Assert
+    //    Assert.Equal(expectedCount, actualCount);
+    //    Assert.Equal(expectedData, actualHeadData);
+    //    Assert.Equal(expectedData, actualTailData);
+    //}
+
+    //[Theory]
+    //[MemberData(nameof(StringTestData))]
+    //public void AddFirst_ConstructorNoParameters_StringType_ReturnsCorrectValues
+    //    (string expectedData)
+    //{
+    //    // Arrange
+    //    var expectedCount = 1;
+    //    var circularLinkedList = new CircularLinkedList<string>();
+    //    circularLinkedList.AddFirst(expectedData);
+
+    //    // Act
+    //    var actualCount = circularLinkedList.Count;
+    //    var actualHeadData = circularLinkedList.Head.Data;
+    //    var actualTailData = circularLinkedList.Tail.Data;
+
+    //    // Assert
+    //    Assert.Equal(expectedCount, actualCount);
+    //    Assert.Equal(expectedData, actualHeadData);
+    //    Assert.Equal(expectedData, actualTailData);
+    //}
+
+    //[Theory]
+    //[MemberData(nameof(IntArrayTestData))]
+    //public void AddFirst_ConstructorWithParameter_IntType_ReturnsCorrectValues
+    //    (int expectedHead, int expectedTail)
+    //{
+    //    // Arrange
+    //    var expectedCount = 2;
+    //    var circularLinkedList = new CircularLinkedList<int>(expectedTail);
+    //    circularLinkedList.AddFirst(expectedHead);
+
+    //    // Act
+    //    var actualCount = circularLinkedList.Count;
+    //    var actualHeadData = circularLinkedList.Head.Data;
+    //    var actualTailData = circularLinkedList.Tail.Data;
+
+    //    // Assert
+    //    Assert.Equal(expectedCount, actualCount);
+    //    Assert.Equal(expectedHead, actualHeadData);
+    //    Assert.Equal(expectedTail, actualTailData);
+    //}
+
+    //[Theory]
+    //[MemberData(nameof(StringArrayTestData))]
+    //public void AddFirst_ConstructorWithParameter_StringType_ReturnsCorrectValues
+    //    (string expectedHead, string expectedTail)
+    //{
+    //    // Arrange
+    //    var expectedCount = 2;
+    //    var circularLinkedList = new CircularLinkedList<string>(expectedTail);
+    //    circularLinkedList.AddFirst(expectedHead);
+
+    //    // Act
+    //    var actualCount = circularLinkedList.Count;
+    //    var actualHeadData = circularLinkedList.Head.Data;
+    //    var actualTailData = circularLinkedList.Tail.Data;
+
+    //    // Assert
+    //    Assert.Equal(expectedCount, actualCount);
+    //    Assert.Equal(expectedHead, actualHeadData);
+    //    Assert.Equal(expectedTail, actualTailData);
+    //}
+
+    #endregion Add
+
     #region AddFirst
 
     [Theory]

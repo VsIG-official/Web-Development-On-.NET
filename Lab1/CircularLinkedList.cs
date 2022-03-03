@@ -43,12 +43,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 			return;
 		}
 
-		var node = new CircularLinkedListNode<T>(item)
+		Head = new CircularLinkedListNode<T>(item)
 		{
 			Next = Head
 		};
-
-		Head = node;
 
 		Count++;
 
