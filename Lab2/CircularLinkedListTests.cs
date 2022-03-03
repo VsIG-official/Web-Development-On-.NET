@@ -307,4 +307,90 @@ public class CircularLinkedListTests
     }
 
     #endregion AddFirst
+
+    #region Clear
+
+    [Fact]
+    public void Clear_ConstructorNoParameters_IntType_ReturnsCorrectValues()
+    {
+        // Arrange
+        var expectedCount = 0;
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.Clear();
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHead = circularLinkedList.Head;
+        var actualTail = circularLinkedList.Tail;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Null(actualHead);
+        Assert.Null(actualTail);
+    }
+
+    [Fact]
+    public void Clear_ConstructorNoParameters_StringType_ReturnsCorrectValues()
+    {
+        // Arrange
+        var expectedCount = 0;
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.Clear();
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHead = circularLinkedList.Head;
+        var actualTail = circularLinkedList.Tail;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Null(actualHead);
+        Assert.Null(actualTail);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void Clear_ConstructorWithParameters_AddFirst_IntType_ReturnsCorrectValues
+        (int expectedData)
+    {
+        // Arrange
+        var expectedCount = 0;
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.AddFirst(expectedData);
+        circularLinkedList.Clear();
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHead = circularLinkedList.Head;
+        var actualTail = circularLinkedList.Tail;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Null(actualHead);
+        Assert.Null(actualTail);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void Clear_ConstructorWithParameters_AddFirst_StringType_ReturnsCorrectValues
+     (string expectedData)
+    {
+        // Arrange
+        var expectedCount = 0;
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.AddFirst(expectedData);
+        circularLinkedList.Clear();
+
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHead = circularLinkedList.Head;
+        var actualTail = circularLinkedList.Tail;
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Null(actualHead);
+        Assert.Null(actualTail);
+    }
+
+    #endregion Clear
 }
