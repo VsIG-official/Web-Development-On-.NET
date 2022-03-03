@@ -5,6 +5,12 @@ namespace Lab2;
 
 public class CircularLinkedListTests
 {
+	#region PremadeData
+
+	#endregion PremadeData
+
+	#region ConstructorWithoutParameters
+
 	[Fact]
 	public void Constructor_NoParameters_IntType_ReturnsCorrectValues()
 	{
@@ -44,6 +50,10 @@ public class CircularLinkedListTests
 		Assert.Equal(expectedCount, actualCount);
 		Assert.False(actualIsReadOnly);
 	}
+
+	#endregion ConstructorWithoutParameters
+
+	#region ConstructorWithParameters
 
 	[Theory]
 	[InlineData(0)]
@@ -91,6 +101,10 @@ public class CircularLinkedListTests
 		Assert.Equal(expectedData, actualHeadData);
 		Assert.Equal(expectedData, actualTailData);
 	}
+
+	#endregion ConstructorWithParameters
+
+	#region AddFirst
 
 	[Theory]
 	[InlineData(0)]
@@ -140,4 +154,6 @@ public class CircularLinkedListTests
 		Assert.Equal(expectedData, actualHeadData);
 		Assert.Equal(expectedData, actualTailData);
 	}
+	
+	#endregion AddFirst
 }
