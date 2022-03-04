@@ -13,12 +13,6 @@ internal class Program
         list.AddFirst(3);
         list.AddFirst(4);
 
-        Console.WriteLine(list.Contains(1));
-        Console.WriteLine(list.Contains(2));
-        Console.WriteLine(list.Contains(3));
-        Console.WriteLine(list.Contains(4));
-        Console.WriteLine(list.Contains(5));
-
-        Console.WriteLine("////");
+        Console.WriteLine(list.ToString());
 	}
 }

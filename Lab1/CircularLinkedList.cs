@@ -1,5 +1,6 @@
 ﻿using Lab1.CircularLinkedListNode;
 using System.Collections;
+using System.Text;
 
 namespace Lab1.CircularLinkedList;
 
@@ -118,7 +119,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
         for (var i = 0; i < Count; i++)
         {
-            if (CircularLinkedList<T>.Compare(current.Data, item))
+            if (Compare(current.Data, item))
             {
                 return true;
             }
@@ -141,7 +142,17 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Remove(T item)
 	{
-		throw new NotImplementedException();
+        //var current = Head;
+
+        //for (var i = Count; i >= Count; i--)
+        //{
+        //    if (Compare(current.Data, item))
+        //    {
+        //        current.Next = 
+        //    }
+        //}
+
+        throw new NotImplementedException();
 	}
 
 	public IEnumerator<T> GetEnumerator()
@@ -159,4 +170,21 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	{
 		return GetEnumerator();
 	}
+
+    public override string ToString()
+    {
+        StringBuilder list = new();
+
+        var current = Head;
+
+        for (int i = 0; i < Count; i++)
+        {
+            list.Append(current.Data.ToString());
+            list.Append(Environment.NewLine + Environment.NewLine);
+
+            current = current.Next;
+        }
+
+        return list.ToString();
+    }
 }
