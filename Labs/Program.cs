@@ -17,6 +17,7 @@ internal class Program
         Console.WriteLine(list.Contains(2));
         Console.WriteLine(list.Contains(3));
         Console.WriteLine(list.Contains(4));
+        Console.WriteLine(list.Contains(5));
 
         Console.WriteLine("////");
 	}
