@@ -470,5 +470,37 @@ public class CircularLinkedListTests
         Assert.False(actualIsContains);
     }
 
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void Contains_DifferentElements_AddFirst_IntType_ReturnsFalse
+        (int data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.AddFirst(data);
+
+        // Act
+        var actualIsContains = circularLinkedList.Contains(data);
+
+        // Assert
+        Assert.True(actualIsContains);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void Contains_DifferentElements_AddFirst_StringType_ReturnsFalse
+        (string data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.AddFirst(data);
+
+        // Act
+        var actualIsContains = circularLinkedList.Contains(data);
+
+        // Assert
+        Assert.True(actualIsContains);
+    }
+
     #endregion Contains
 }
