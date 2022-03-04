@@ -373,7 +373,7 @@ public class CircularLinkedListTests
     [Theory]
     [MemberData(nameof(StringTestData))]
     public void Clear_ConstructorWithParameters_AddFirst_StringType_ReturnsCorrectValues
-     (string expectedData)
+        (string expectedData)
     {
         // Arrange
         var expectedCount = 0;

@@ -114,10 +114,27 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Contains(T item)
 	{
-		throw new NotImplementedException();
+        var current = Head;
+
+        for (var i = 0; i < Count; i++)
+        {
+            if (CircularLinkedList<T>.Compare(current.Data, item))
+            {
+                return true;
+            }
+
+            current = current.Next;
+        }
+
+        return false;
 	}
 
-	public void CopyTo(T[] array, int arrayIndex)
+    // regular "==" will only works when T is constrained to be a reference type
+    // Without any constraints, you can compare with null, but only null - and
+    // that comparison will always be false for non-nullable value types.
+    private static bool Compare<T>(T x, T y) => EqualityComparer<T>.Default.Equals(x, y);
+
+    public void CopyTo(T[] array, int arrayIndex)
 	{
 		throw new NotImplementedException();
 	}
