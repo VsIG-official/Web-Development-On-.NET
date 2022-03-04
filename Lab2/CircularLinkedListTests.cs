@@ -1,4 +1,5 @@
 ﻿using Lab1.CircularLinkedList;
+using System;
 using System.Collections.Generic;
 using Xunit;
 
@@ -449,10 +450,10 @@ public class CircularLinkedListTests
         var circularLinkedList = new CircularLinkedList<int>();
 
         // Act
-        var actualIsContains = circularLinkedList.Contains(data);
+        var actual = circularLinkedList.Contains(data);
 
         // Assert
-        Assert.False(actualIsContains);
+        Assert.False(actual);
     }
 
     [Theory]
@@ -464,15 +465,15 @@ public class CircularLinkedListTests
         var circularLinkedList = new CircularLinkedList<string>();
 
         // Act
-        var actualIsContains = circularLinkedList.Contains(data);
+        var actual = circularLinkedList.Contains(data);
 
         // Assert
-        Assert.False(actualIsContains);
+        Assert.False(actual);
     }
 
     [Theory]
     [MemberData(nameof(IntTestData))]
-    public void Contains_DifferentElements_AddFirst_IntType_ReturnsFalse
+    public void Contains_DifferentElements_AddFirst_IntType_ReturnsTrue
         (int data)
     {
         // Arrange
@@ -480,15 +481,15 @@ public class CircularLinkedListTests
         circularLinkedList.AddFirst(data);
 
         // Act
-        var actualIsContains = circularLinkedList.Contains(data);
+        var actual = circularLinkedList.Contains(data);
 
         // Assert
-        Assert.True(actualIsContains);
+        Assert.True(actual);
     }
 
     [Theory]
     [MemberData(nameof(StringTestData))]
-    public void Contains_DifferentElements_AddFirst_StringType_ReturnsFalse
+    public void Contains_DifferentElements_AddFirst_StringType_ReturnsTrue
         (string data)
     {
         // Arrange
@@ -496,15 +497,15 @@ public class CircularLinkedListTests
         circularLinkedList.AddFirst(data);
 
         // Act
-        var actualIsContains = circularLinkedList.Contains(data);
+        var actual = circularLinkedList.Contains(data);
 
         // Assert
-        Assert.True(actualIsContains);
+        Assert.True(actual);
     }
 
     //[Theory]
     //[MemberData(nameof(IntTestData))]
-    //public void Contains_DifferentElements_Add_IntType_ReturnsFalse
+    //public void Contains_DifferentElements_Add_IntType_ReturnsTrue
     //    (int data)
     //{
     //    // Arrange
@@ -512,15 +513,15 @@ public class CircularLinkedListTests
     //    circularLinkedList.Add(data);
 
     //    // Act
-    //    var actualIsContains = circularLinkedList.Contains(data);
+    //    var actual = circularLinkedList.Contains(data);
 
     //    // Assert
-    //    Assert.True(actualIsContains);
+    //    Assert.True(actual);
     //}
 
     //[Theory]
     //[MemberData(nameof(StringTestData))]
-    //public void Contains_DifferentElements_Add_StringType_ReturnsFalse
+    //public void Contains_DifferentElements_Add_StringType_ReturnsTrue
     //    (string data)
     //{
     //    // Arrange
@@ -528,11 +529,101 @@ public class CircularLinkedListTests
     //    circularLinkedList.Add(data);
 
     //    // Act
-    //    var actualIsContains = circularLinkedList.Contains(data);
+    //    var actual = circularLinkedList.Contains(data);
 
     //    // Assert
-    //    Assert.True(actualIsContains);
+    //    Assert.True(actual);
     //}
 
     #endregion Contains
+
+    #region CopyTo
+
+
+
+    #endregion CopyTo
+
+    #region Remove
+
+
+
+    #endregion Remove
+
+    #region ToString
+
+    [Fact]
+    public void ToString_NoElements_IntType_ReturnsCorrectValues()
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+        var expected = "";
+
+        // Act
+        var actual = circularLinkedList.ToString();
+
+        // Assert
+        Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void ToString_NoElements_StringType_ReturnsCorrectValues()
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+        var expected = "";
+
+        // Act
+        var actual = circularLinkedList.ToString();
+
+        // Assert
+        Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void ToString_DifferentElements_IntType_ReturnsCorrectValues
+        (int firstElement, int secondElement)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+
+        circularLinkedList.AddFirst(secondElement);
+        circularLinkedList.AddFirst(firstElement);
+
+        var firstPart = $"{ firstElement + Environment.NewLine + Environment.NewLine }";
+        var secondPart = $"{ secondElement + Environment.NewLine + Environment.NewLine }";
+
+        var expected = firstPart + secondPart;
+
+        // Act
+        var actual = circularLinkedList.ToString();
+
+        // Assert
+        Assert.Equal(expected, actual);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void ToString_DifferentElements_StringType_ReturnsCorrectValues
+    (string firstElement, string secondElement)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+
+        circularLinkedList.AddFirst(secondElement);
+        circularLinkedList.AddFirst(firstElement);
+
+        var firstPart = $"{ firstElement + Environment.NewLine + Environment.NewLine }";
+        var secondPart = $"{ secondElement + Environment.NewLine + Environment.NewLine }";
+
+        var expected = firstPart + secondPart;
+
+        // Act
+        var actual = circularLinkedList.ToString();
+
+        // Assert
+        Assert.Equal(expected, actual);
+    }
+
+    #endregion ToString
 }
