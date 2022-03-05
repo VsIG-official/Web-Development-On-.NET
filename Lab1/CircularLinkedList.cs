@@ -66,7 +66,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	private void SetFirstElement(T item)
 	{
-        CircularLinkedList<T>.CheckNull(item);
+        CheckNull(item);
 
         var node = new CircularLinkedListNode<T>(item);
 
