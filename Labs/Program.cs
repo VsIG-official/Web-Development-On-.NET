@@ -6,15 +6,12 @@ internal class Program
 {
     private static void Main()
 	{
-		CircularLinkedList<string> list = new();
+		CircularLinkedList<int> list = new();
 
-        list.AddFirst("1");
-        list.AddFirst("2");
-        list.AddFirst("3");
-        list.AddFirst("4");
-
-        Console.WriteLine(list[0] = null);
-        Console.WriteLine(list[0]);
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+        list.Add(4);
 
         Console.WriteLine(list.ToString());
     }
