@@ -38,11 +38,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
     public void Add(T item)
     {
-        //if (IsEmpty())
-        //{
-        //    SetFirstElement(item);
-        //    return;
-        //}
+        if (item == null)
+        {
+            throw new NullReferenceException(nameof(item));
+        }
 
         //Tail = new CircularLinkedListNode<T>(item)
         //{
@@ -64,7 +63,12 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
     public void AddFirst(T item)
 	{
-		if (IsEmpty())
+        if (item == null)
+        {
+            throw new NullReferenceException(nameof(item));
+        }
+
+        if (IsEmpty())
 		{
 			SetFirstElement(item);
 			return;
@@ -115,6 +119,11 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Contains(T item)
 	{
+        if (item == null)
+        {
+            throw new NullReferenceException(nameof(item));
+        }
+
         var current = Head;
 
         for (var i = 0; i < Count; i++)
@@ -142,6 +151,11 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Remove(T item)
 	{
+        //if (item == null)
+        //{
+        //    throw new NullReferenceException(nameof(item));
+        //}
+
         //var current = Head;
 
         //for (var i = Count; i >= Count; i--)

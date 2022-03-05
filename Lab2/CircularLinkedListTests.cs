@@ -133,6 +133,12 @@ public class CircularLinkedListTests
 
     #endregion Constructors
 
+    #region Indexer
+
+
+
+    #endregion Indexer
+
     #region Add
 
     //[Theory]
@@ -605,7 +611,7 @@ public class CircularLinkedListTests
     [Theory]
     [MemberData(nameof(StringArrayTestData))]
     public void ToString_DifferentElements_StringType_ReturnsCorrectValues
-    (string firstElement, string secondElement)
+        (string firstElement, string secondElement)
     {
         // Arrange
         var circularLinkedList = new CircularLinkedList<string>();
