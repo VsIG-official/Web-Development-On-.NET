@@ -28,10 +28,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
     {
         get
         {
-            if (index > Count - 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index));
-            }
+            CheckCorrectIndex(index);
 
             var current = Head;
 
@@ -46,10 +43,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         {
             CheckNull(value);
 
-            if (index > Count - 1)
-            {
-                throw new ArgumentOutOfRangeException(nameof(index));
-            }
+            CheckCorrectIndex(index);
 
             var current = Head;
 
@@ -62,9 +56,17 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         }
     }
 
+    private void CheckCorrectIndex(int index)
+    {
+        if (index > Count - 1)
+        {
+            throw new ArgumentOutOfRangeException(nameof(index));
+        }
+    }
+
 	private void SetFirstElement(T item)
 	{
-        CheckNull(item);
+        CircularLinkedList<T>.CheckNull(item);
 
         var node = new CircularLinkedListNode<T>(item);
 
@@ -105,7 +107,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
     public void AddFirst(T item)
 	{
-        CheckNull(item);
+        CircularLinkedList<T>.CheckNull(item);
 
         if (IsEmpty())
 		{
@@ -158,7 +160,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Contains(T item)
 	{
-        CheckNull(item);
+        CircularLinkedList<T>.CheckNull(item);
 
         var current = Head;
 
@@ -218,7 +220,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		return GetEnumerator();
 	}
 
-    private void CheckNull(T item)
+    private static void CheckNull(T item)
     {
         if (item == null)
         {
