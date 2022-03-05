@@ -13,6 +13,13 @@ internal class Program
         list.Add(3);
         list.Add(4);
 
+        foreach (var item in list.Reverse())
+        {
+            Console.WriteLine(item);
+        }
+
+        Console.WriteLine();
+
         Console.WriteLine(list.ToString());
     }
 }

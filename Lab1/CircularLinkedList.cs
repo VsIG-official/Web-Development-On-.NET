@@ -184,8 +184,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
     public void CopyTo(T[] array, int arrayIndex)
 	{
-		throw new NotImplementedException();
-	}
+        var node = Head;
+
+        for (var i = arrayIndex; i < Count; i++)
+        {
+            array[arrayIndex + i] = node.Data;
+            node = node.Next;
+        }
+    }
 
 	public bool Remove(T item)
 	{
@@ -225,7 +231,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		}
 	}
 
-	IEnumerator IEnumerable.GetEnumerator()
+    IEnumerator IEnumerable.GetEnumerator()
 	{
 		return GetEnumerator();
 	}
