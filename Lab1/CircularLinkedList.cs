@@ -24,6 +24,47 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 		SetFirstElement(item);
 	}
 
+    public T this[int index]
+    {
+        get
+        {
+            if (index > Count - 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+
+            var current = Head;
+
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            return current.Data;
+        }
+        set
+        {
+            if (index > Count - 1)
+            {
+                throw new ArgumentOutOfRangeException(nameof(index));
+            }
+
+            if (value == null)
+            {
+                throw new NullReferenceException(nameof(value));
+            }
+
+            var current = Head;
+
+            for (int i = 0; i < index; i++)
+            {
+                current = current.Next;
+            }
+
+            current.Data = value;
+        }
+    }
+
 	private void SetFirstElement(T item)
 	{
 		var node = new CircularLinkedListNode<T>(item);
