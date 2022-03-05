@@ -44,14 +44,11 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         }
         set
         {
+            CheckNull(value);
+
             if (index > Count - 1)
             {
                 throw new ArgumentOutOfRangeException(nameof(index));
-            }
-
-            if (value == null)
-            {
-                throw new NullReferenceException(nameof(value));
             }
 
             var current = Head;
@@ -67,7 +64,9 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	private void SetFirstElement(T item)
 	{
-		var node = new CircularLinkedListNode<T>(item);
+        CheckNull(item);
+
+        var node = new CircularLinkedListNode<T>(item);
 
 		Head = node;
 		Head.Next = node;
@@ -79,35 +78,34 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
     public void Add(T item)
     {
-        if (item == null)
-        {
-            throw new NullReferenceException(nameof(item));
-        }
+        //CheckNull(item);
+
+        //if (IsEmpty())
+        //{
+        //    SetFirstElement(item);
+        //    return;
+        //}
 
         //Tail = new CircularLinkedListNode<T>(item)
         //{
         //    Next = Head
         //};
 
-        //Count++;
-
         //var current = Head;
 
-        //for (var i = 0; i < Count - 1; i++)
+        //for (int i = 0; i < Count; i++)
         //{
-        //    if (current != Head && )
-        //    {
 
-        //    }
         //}
+
+        //Count++;
+
+
     }
 
     public void AddFirst(T item)
 	{
-        if (item == null)
-        {
-            throw new NullReferenceException(nameof(item));
-        }
+        CheckNull(item);
 
         if (IsEmpty())
 		{
@@ -160,10 +158,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Contains(T item)
 	{
-        if (item == null)
-        {
-            throw new NullReferenceException(nameof(item));
-        }
+        CheckNull(item);
 
         var current = Head;
 
@@ -192,10 +187,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Remove(T item)
 	{
-        //if (item == null)
-        //{
-        //    throw new NullReferenceException(nameof(item));
-        //}
+        //CheckNull(item);
 
         //var current = Head;
 
@@ -225,6 +217,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	{
 		return GetEnumerator();
 	}
+
+    private void CheckNull(T item)
+    {
+        if (item == null)
+        {
+            throw new NullReferenceException(nameof(item));
+        }
+    }
 
     public override string ToString()
     {
