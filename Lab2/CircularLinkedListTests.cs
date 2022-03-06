@@ -755,11 +755,13 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(IntTestData))]
-    public void GetEnumerator_DifferentElements_IntType_ReturnsCorrectValues
+    public void GetEnumerator_OneElement_IntType_ReturnsCorrectValues
         (int expectedData)
     {
+        // Arrange
         var circularLinkedList = new CircularLinkedList<int>(expectedData);
 
+        // Assert
         foreach (var item in circularLinkedList)
         {
             Assert.Equal(expectedData, item);
@@ -768,14 +770,56 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(StringTestData))]
-    public void GetEnumerator_DifferentElements_StringType_ReturnsCorrectValues
+    public void GetEnumerator_OneElement_StringType_ReturnsCorrectValues
         (string expectedData)
     {
+        // Arrange
         var circularLinkedList = new CircularLinkedList<string>(expectedData);
 
+        // Assert
         foreach (var item in circularLinkedList)
         {
             Assert.Equal(expectedData, item);
+        }
+    }
+
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void GetEnumerator_DifferentElements_IntType_ReturnsCorrectValues
+        (int expectedFirstData, int expectedSecondData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>(expectedFirstData);
+        circularLinkedList.Add(expectedSecondData);
+
+        var sequence = new int[] { expectedFirstData, expectedSecondData };
+        var counter = 0;
+
+        // Assert
+        foreach (var item in circularLinkedList)
+        {
+            Assert.Equal(sequence[counter], item);
+            counter++;
+        }
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void GetEnumerator_DifferentElements_StringType_ReturnsCorrectValues
+        (string expectedFirstData, string expectedSecondData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(expectedFirstData);
+        circularLinkedList.Add(expectedSecondData);
+
+        var sequence = new string[] { expectedFirstData, expectedSecondData };
+        var counter = 0;
+
+        // Assert
+        foreach (var item in circularLinkedList)
+        {
+            Assert.Equal(sequence[counter], item);
+            counter++;
         }
     }
 
