@@ -240,7 +240,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
     {
         if (item == null)
         {
-            throw new NullReferenceException(nameof(item));
+            throw new ArgumentNullException(nameof(item));
         }
     }
 

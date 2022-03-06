@@ -263,6 +263,73 @@ public class CircularLinkedListTests
 
     #region IndexerSet
 
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void IndexerSet_OneElement_IntType_ReturnsCorrectValues
+        (int dataToChange, int expectedData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>(dataToChange);
+
+        // Act
+        circularLinkedList[0] = expectedData;
+        var actualIndexData = circularLinkedList[0];
+
+        // Assert
+        Assert.Equal(expectedData, actualIndexData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void IndexerSet_OneElement_StringType_ReturnsCorrectValues
+        (string dataToChange, string expectedData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(dataToChange);
+
+        // Act
+        circularLinkedList[0] = expectedData;
+        var actualIndexData = circularLinkedList[0];
+
+        // Assert
+        Assert.Equal(expectedData, actualIndexData);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void IndexerSet_OneElement_IntType_ReturnsOutOfRangeException
+        (int expectedData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[0] = expectedData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void IndexerSet_OneElement_StringType_ReturnsOutOfRangeException
+        (string expectedData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[0] = expectedData);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void IndexerSet_OneElement_StringType_ReturnsNullReferenceException
+        (string data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(data);
+
+        // Assert
+        Assert.Throws<ArgumentNullException>(() => circularLinkedList[0] = null);
+    }
 
 
     #endregion IndexerSet
