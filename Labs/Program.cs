@@ -5,8 +5,8 @@ namespace Labs;
 internal class Program
 {
     private static void Main()
-	{
-		CircularLinkedList<int> list = new();
+    {
+        CircularLinkedList<int> list = new();
 
         list.Add(1);
         list.Add(2);

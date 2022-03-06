@@ -1,6 +1,6 @@
-﻿using Lab1.CircularLinkedListNode;
-using System.Collections;
+﻿using System.Collections;
 using System.Text;
+using Lab1.CircularLinkedListNode;
 
 namespace Lab1.CircularLinkedList;
 
@@ -9,26 +9,26 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
     #region Fields
 
     public CircularLinkedListNode<T>? Head { get; private set; }
-	public CircularLinkedListNode<T>? Tail { get; private set; }
+    public CircularLinkedListNode<T>? Tail { get; private set; }
 
-	public int Count { get; private set; }
+    public int Count { get; private set; }
 
-	public bool IsReadOnly => false;
+    public bool IsReadOnly => false;
 
     #endregion Fields
 
     #region Constructors
 
     public CircularLinkedList()
-	{
-		Head = null;
-		Tail = null;
-	}
+    {
+        Head = null;
+        Tail = null;
+    }
 
-	public CircularLinkedList(T item)
-	{
-		SetFirstElement(item);
-	}
+    public CircularLinkedList(T item)
+    {
+        SetFirstElement(item);
+    }
 
     #endregion Constructors
 
@@ -74,19 +74,19 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         }
     }
 
-	private void SetFirstElement(T item)
-	{
+    private void SetFirstElement(T item)
+    {
         CheckNull(item);
 
         var node = new CircularLinkedListNode<T>(item);
 
-		Head = node;
-		Head.Next = node;
-		Tail = node;
-		Tail.Next = node;
+        Head = node;
+        Head.Next = node;
+        Tail = node;
+        Tail.Next = node;
 
-		Count++;
-	}
+        Count++;
+    }
 
     public void Add(T item)
     {
@@ -116,24 +116,24 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
     }
 
     public void AddFirst(T item)
-	{
+    {
         CheckNull(item);
 
         if (IsEmpty())
-		{
-			SetFirstElement(item);
-			return;
-		}
+        {
+            SetFirstElement(item);
+            return;
+        }
 
-		Head = new CircularLinkedListNode<T>(item)
-		{
-			Next = Head
-		};
+        Head = new CircularLinkedListNode<T>(item)
+        {
+            Next = Head
+        };
 
-		Count++;
+        Count++;
 
         SetTail();
-	}
+    }
 
     //public void AddAt(T item, int index)
     //{
@@ -197,14 +197,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         Tail.Next = Head;
     }
 
-	public void Clear()
-	{
+    public void Clear()
+    {
         Head = Tail = null;
         Count = 0;
-	}
+    }
 
-	public bool Contains(T item)
-	{
+    public bool Contains(T item)
+    {
         CheckNull(item);
 
         var current = Head;
@@ -220,7 +220,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         }
 
         return false;
-	}
+    }
 
     // regular "==" will only works when T is constrained to be a reference type
     // Without any constraints, you can compare with null, but only null - and
@@ -228,7 +228,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
     private static bool Compare<T>(T x, T y) => EqualityComparer<T>.Default.Equals(x, y);
 
     public void CopyTo(T[] array, int arrayIndex)
-	{
+    {
         var node = Head;
 
         for (var i = arrayIndex; i < Count; i++)
@@ -238,8 +238,8 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         }
     }
 
-	public bool Remove(T item)
-	{
+    public bool Remove(T item)
+    {
         CheckNull(item);
 
         var current = Head;
@@ -266,20 +266,20 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
     }
 
     public IEnumerator<T> GetEnumerator()
-	{
-		var node = Head;
+    {
+        var node = Head;
 
-		for (var i = 0; i < Count; i++)
-		{
-			yield return node.Data;
-			node = node.Next;
-		}
-	}
+        for (var i = 0; i < Count; i++)
+        {
+            yield return node.Data;
+            node = node.Next;
+        }
+    }
 
     IEnumerator IEnumerable.GetEnumerator()
-	{
-		return GetEnumerator();
-	}
+    {
+        return GetEnumerator();
+    }
 
     public override string ToString()
     {

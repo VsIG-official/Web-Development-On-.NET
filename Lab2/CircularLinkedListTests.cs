@@ -1,32 +1,32 @@
-﻿using Lab1.CircularLinkedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Lab1.CircularLinkedList;
 using Xunit;
 
 namespace Lab2;
 
 public class CircularLinkedListTests
 {
-	#region PremadeData
+    #region PremadeData
 
-	public static IEnumerable<object[]> IntTestData => new List<object[]>
-	{
-		new object[] { 0 },
-		new object[] { 1 },
-		new object[] { -1 },
-		new object[] { int.MaxValue },
-		new object[] { int.MinValue },
-	};
+    public static IEnumerable<object[]> IntTestData => new List<object[]>
+    {
+        new object[] { 0 },
+        new object[] { 1 },
+        new object[] { -1 },
+        new object[] { int.MaxValue },
+        new object[] { int.MinValue },
+    };
 
-	public static IEnumerable<object[]> StringTestData => new List<object[]>
-	{
-		new object[] { "Паляниця" },
-		new object[] { "Русский военный корабль" },
-		new object[] { "European Union" },
-		new object[] { "汉字" },
-		new object[] { "الْعَرَبِيَّة" },
-		new object[] { "👾🤓😎🥸🤩🥳" },
-		new object[] { "█Ã░╬ðØ" },
+    public static IEnumerable<object[]> StringTestData => new List<object[]>
+    {
+        new object[] { "Паляниця" },
+        new object[] { "Русский военный корабль" },
+        new object[] { "European Union" },
+        new object[] { "汉字" },
+        new object[] { "الْعَرَبِيَّة" },
+        new object[] { "👾🤓😎🥸🤩🥳" },
+        new object[] { "█Ã░╬ðØ" },
     };
 
     public static IEnumerable<object[]> IntArrayTestData => new List<object[]>
@@ -54,44 +54,44 @@ public class CircularLinkedListTests
     #region Constructors
 
     [Fact]
-	public void Constructor_NoParameters_IntType_ReturnsCorrectValues()
-	{
-		// Arrange
-		var circularLinkedList = new CircularLinkedList<int>();
-		var expectedCount = 0;
+    public void Constructor_NoParameters_IntType_ReturnsCorrectValues()
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+        var expectedCount = 0;
 
-		// Act
-		var actualTail = circularLinkedList.Tail;
-		var actualHead = circularLinkedList.Head;
-		var actualCount = circularLinkedList.Count;
-		var actualIsReadOnly = circularLinkedList.IsReadOnly;
+        // Act
+        var actualTail = circularLinkedList.Tail;
+        var actualHead = circularLinkedList.Head;
+        var actualCount = circularLinkedList.Count;
+        var actualIsReadOnly = circularLinkedList.IsReadOnly;
 
-		// Assert
-		Assert.Null(actualTail);
-		Assert.Null(actualHead);
-		Assert.Equal(expectedCount, actualCount);
-		Assert.False(actualIsReadOnly);
-	}
+        // Assert
+        Assert.Null(actualTail);
+        Assert.Null(actualHead);
+        Assert.Equal(expectedCount, actualCount);
+        Assert.False(actualIsReadOnly);
+    }
 
-	[Fact]
-	public void Constructor_NoParameters_StringType_ReturnsCorrectValues()
-	{
-		// Arrange
-		var circularLinkedList = new CircularLinkedList<string>();
-		var expectedCount = 0;
+    [Fact]
+    public void Constructor_NoParameters_StringType_ReturnsCorrectValues()
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+        var expectedCount = 0;
 
-		// Act
-		var actualTail = circularLinkedList.Tail;
-		var actualHead = circularLinkedList.Head;
-		var actualCount = circularLinkedList.Count;
-		var actualIsReadOnly = circularLinkedList.IsReadOnly;
+        // Act
+        var actualTail = circularLinkedList.Tail;
+        var actualHead = circularLinkedList.Head;
+        var actualCount = circularLinkedList.Count;
+        var actualIsReadOnly = circularLinkedList.IsReadOnly;
 
-		// Assert
-		Assert.Null(actualTail);
-		Assert.Null(actualHead);
-		Assert.Equal(expectedCount, actualCount);
-		Assert.False(actualIsReadOnly);
-	}
+        // Assert
+        Assert.Null(actualTail);
+        Assert.Null(actualHead);
+        Assert.Equal(expectedCount, actualCount);
+        Assert.False(actualIsReadOnly);
+    }
 
     [Theory]
     [MemberData(nameof(IntTestData))]
@@ -426,46 +426,46 @@ public class CircularLinkedListTests
     #region AddFirst
 
     [Theory]
-	[MemberData(nameof(IntTestData))]
-	public void AddFirst_ConstructorNoParameters_IntType_ReturnsCorrectValues
+    [MemberData(nameof(IntTestData))]
+    public void AddFirst_ConstructorNoParameters_IntType_ReturnsCorrectValues
         (int expectedData)
-	{
-		// Arrange
-		var expectedCount = 1;
-		var circularLinkedList = new CircularLinkedList<int>();
-		circularLinkedList.AddFirst(expectedData);
+    {
+        // Arrange
+        var expectedCount = 1;
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.AddFirst(expectedData);
 
-		// Act
-		var actualCount = circularLinkedList.Count;
-		var actualHeadData = circularLinkedList.Head.Data;
-		var actualTailData = circularLinkedList.Tail.Data;
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
 
-		// Assert
-		Assert.Equal(expectedCount, actualCount);
-		Assert.Equal(expectedData, actualHeadData);
-		Assert.Equal(expectedData, actualTailData);
-	}
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedData, actualHeadData);
+        Assert.Equal(expectedData, actualTailData);
+    }
 
-	[Theory]
-	[MemberData(nameof(StringTestData))]
-	public void AddFirst_ConstructorNoParameters_StringType_ReturnsCorrectValues
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void AddFirst_ConstructorNoParameters_StringType_ReturnsCorrectValues
         (string expectedData)
-	{
-		// Arrange
-		var expectedCount = 1;
-		var circularLinkedList = new CircularLinkedList<string>();
-		circularLinkedList.AddFirst(expectedData);
+    {
+        // Arrange
+        var expectedCount = 1;
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.AddFirst(expectedData);
 
-		// Act
-		var actualCount = circularLinkedList.Count;
-		var actualHeadData = circularLinkedList.Head.Data;
-		var actualTailData = circularLinkedList.Tail.Data;
+        // Act
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
 
-		// Assert
-		Assert.Equal(expectedCount, actualCount);
-		Assert.Equal(expectedData, actualHeadData);
-		Assert.Equal(expectedData, actualTailData);
-	}
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedData, actualHeadData);
+        Assert.Equal(expectedData, actualTailData);
+    }
 
     [Theory]
     [MemberData(nameof(IntArrayTestData))]
