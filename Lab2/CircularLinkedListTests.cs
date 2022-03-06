@@ -320,7 +320,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntTestData))]
+    [MemberData(nameof(StringTestData))]
     public void IndexerSet_OneElement_StringType_ReturnsNullReferenceException
         (string data)
     {
@@ -330,7 +330,6 @@ public class CircularLinkedListTests
         // Assert
         Assert.Throws<ArgumentNullException>(() => circularLinkedList[0] = null);
     }
-
 
     #endregion IndexerSet
 

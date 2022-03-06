@@ -6,14 +6,20 @@ namespace Lab1.CircularLinkedList;
 
 public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 {
-	public CircularLinkedListNode<T>? Head { get; private set; }
+    #region Fields
+
+    public CircularLinkedListNode<T>? Head { get; private set; }
 	public CircularLinkedListNode<T>? Tail { get; private set; }
 
 	public int Count { get; private set; }
 
 	public bool IsReadOnly => false;
 
-	public CircularLinkedList()
+    #endregion Fields
+
+    #region Constructors
+
+    public CircularLinkedList()
 	{
 		Head = null;
 		Tail = null;
@@ -23,6 +29,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	{
 		SetFirstElement(item);
 	}
+
+    #endregion Constructors
+
+    #region Methods
 
     public T this[int index]
     {
@@ -124,6 +134,11 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
         SetTail();
 	}
+
+    public void AddAt(T item, int index)
+    {
+        throw new NotImplementedException();
+    }
 
     private bool IsEmpty()
     {
@@ -260,4 +275,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
         return list.ToString();
     }
+
+    #endregion Methods
 }
