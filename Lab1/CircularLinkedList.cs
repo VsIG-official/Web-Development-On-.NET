@@ -107,7 +107,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
     public void AddFirst(T item)
 	{
-        CircularLinkedList<T>.CheckNull(item);
+        CheckNull(item);
 
         if (IsEmpty())
 		{

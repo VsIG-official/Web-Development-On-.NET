@@ -135,7 +135,137 @@ public class CircularLinkedListTests
 
     #region Indexer
 
+    #region IndexerGet
 
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void IndexerGet_OneElement_IntType_ReturnsCorrectValues
+        (int expectedData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>(expectedData);
+
+        // Act
+        var actualIndexData = circularLinkedList[0];
+
+        // Assert
+        Assert.Equal(expectedData, actualIndexData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void IndexerGet_OneElement_StringType_ReturnsCorrectValues
+        (string expectedData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(expectedData);
+
+        // Act
+        var actualIndexData = circularLinkedList[0];
+
+        // Assert
+        Assert.Equal(expectedData, actualIndexData);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void IndexerGet_DifferentElements_IntType_ReturnsCorrectValues
+        (int expectedHead, int expectedTail)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.Add(expectedHead);
+        circularLinkedList.Add(expectedTail);
+
+        // Act
+        var actualHeadIndexData = circularLinkedList[0];
+        var actualTailIndexData = circularLinkedList[1];
+
+        // Assert
+        Assert.Equal(expectedHead, actualHeadIndexData);
+        Assert.Equal(expectedTail, actualTailIndexData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void IndexerGet_DifferentElements_StringType_ReturnsCorrectValues
+        (string expectedHead, string expectedTail)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.Add(expectedHead);
+        circularLinkedList.Add(expectedTail);
+
+        // Act
+        var actualHeadIndexData = circularLinkedList[0];
+        var actualTailIndexData = circularLinkedList[1];
+
+        // Assert
+        Assert.Equal(expectedHead, actualHeadIndexData);
+        Assert.Equal(expectedTail, actualTailIndexData);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void IndexerGet_OneElement_IntType_ReturnsException
+        (int data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>(data);
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[1]);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void IndexerGet_OneElement_StringType_ReturnsException
+        (string data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(data);
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[1]);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void IndexerGet_DifferentElements_IntType_ReturnsException
+        (int head, int tail)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.Add(head);
+        circularLinkedList.Add(tail);
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[2]);
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[3]);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void IndexerGet_DifferentElements_StringType_ReturnsException
+        (string head, string tail)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.Add(head);
+        circularLinkedList.Add(tail);
+
+        // Assert
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[2]);
+        Assert.Throws<ArgumentOutOfRangeException>(() => circularLinkedList[3]);
+    }
+
+    #endregion IndexerGet
+
+    #region IndexerSet
+
+
+
+    #endregion IndexerSet
 
     #endregion Indexer
 
