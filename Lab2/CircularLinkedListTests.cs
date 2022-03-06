@@ -757,7 +757,41 @@ public class CircularLinkedListTests
 
     #region CopyTo
 
+    [Theory]
+    [MemberData(nameof(IntArrayTestData))]
+    public void CopyTo_DifferentElements_IntType_ReturnsCorrectValues
+        (int expectedFirstData, int expectedSecondData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>(expectedFirstData);
+        circularLinkedList.Add(expectedSecondData);
 
+        // Act
+        int[] actualArray = new int[2];
+        circularLinkedList.CopyTo(actualArray, 0);
+
+        // Assert
+        Assert.Equal(circularLinkedList[0], actualArray[0]);
+        Assert.Equal(circularLinkedList[1], actualArray[1]);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringArrayTestData))]
+    public void CopyTo_DifferentElements_StringType_ReturnsCorrectValues
+        (string expectedFirstData, string expectedSecondData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(expectedFirstData);
+        circularLinkedList.Add(expectedSecondData);
+
+        // Act
+        string[] actualArray = new string[2];
+        circularLinkedList.CopyTo(actualArray, 0);
+
+        // Assert
+        Assert.Equal(circularLinkedList[0], actualArray[0]);
+        Assert.Equal(circularLinkedList[1], actualArray[1]);
+    }
 
     #endregion CopyTo
 
