@@ -509,37 +509,37 @@ public class CircularLinkedListTests
         Assert.True(actual);
     }
 
-    //[Theory]
-    //[MemberData(nameof(IntTestData))]
-    //public void Contains_DifferentElements_Add_IntType_ReturnsTrue
-    //    (int data)
-    //{
-    //    // Arrange
-    //    var circularLinkedList = new CircularLinkedList<int>();
-    //    circularLinkedList.Add(data);
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void Contains_DifferentElements_Add_IntType_ReturnsTrue
+        (int data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>();
+        circularLinkedList.Add(data);
 
-    //    // Act
-    //    var actual = circularLinkedList.Contains(data);
+        // Act
+        var actual = circularLinkedList.Contains(data);
 
-    //    // Assert
-    //    Assert.True(actual);
-    //}
+        // Assert
+        Assert.True(actual);
+    }
 
-    //[Theory]
-    //[MemberData(nameof(StringTestData))]
-    //public void Contains_DifferentElements_Add_StringType_ReturnsTrue
-    //    (string data)
-    //{
-    //    // Arrange
-    //    var circularLinkedList = new CircularLinkedList<string>();
-    //    circularLinkedList.Add(data);
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void Contains_DifferentElements_Add_StringType_ReturnsTrue
+        (string data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+        circularLinkedList.Add(data);
 
-    //    // Act
-    //    var actual = circularLinkedList.Contains(data);
+        // Act
+        var actual = circularLinkedList.Contains(data);
 
-    //    // Assert
-    //    Assert.True(actual);
-    //}
+        // Assert
+        Assert.True(actual);
+    }
 
     #endregion Contains
 
