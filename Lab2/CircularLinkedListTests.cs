@@ -751,6 +751,36 @@ public class CircularLinkedListTests
 
     #endregion Remove
 
+    #region GetEnumerator
+
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void GetEnumerator_DifferentElements_IntType_ReturnsCorrectValues
+        (int expectedData)
+    {
+        var circularLinkedList = new CircularLinkedList<int>(expectedData);
+
+        foreach (var item in circularLinkedList)
+        {
+            Assert.Equal(expectedData, item);
+        }
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void GetEnumerator_DifferentElements_StringType_ReturnsCorrectValues
+        (string expectedData)
+    {
+        var circularLinkedList = new CircularLinkedList<string>(expectedData);
+
+        foreach (var item in circularLinkedList)
+        {
+            Assert.Equal(expectedData, item);
+        }
+    }
+
+    #endregion GetEnumerator
+
     #region ToString
 
     [Fact]

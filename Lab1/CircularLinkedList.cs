@@ -150,6 +150,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         return false;
     }
 
+    private static void CheckNull(T item)
+    {
+        if (item == null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
+    }
+
     private void SetTail()
     {
         var currentNode = Head;
@@ -250,14 +258,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 	{
 		return GetEnumerator();
 	}
-
-    private static void CheckNull(T item)
-    {
-        if (item == null)
-        {
-            throw new ArgumentNullException(nameof(item));
-        }
-    }
 
     public override string ToString()
     {
