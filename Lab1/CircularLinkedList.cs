@@ -135,10 +135,32 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         SetTail();
 	}
 
-    public void AddAt(T item, int index)
-    {
-        throw new NotImplementedException();
-    }
+    //public void AddAt(T item, int index)
+    //{
+    //    CheckNull(item);
+    //    CheckCorrectIndex(index);
+
+    //    if (IsEmpty())
+    //    {
+    //        SetFirstElement(item);
+    //        return;
+    //    }
+
+    //    var current = Head;
+    //    var nextToCurrent = Head;
+
+    //    for (var i = 0; i < index; i++)
+    //    {
+    //        current = current.Next;
+    //    }
+
+    //    for (var i = 0; i < index + 1; i++)
+    //    {
+    //        nextToCurrent = nextToCurrent.Next;
+    //    }
+
+
+    //}
 
     private bool IsEmpty()
     {
@@ -218,20 +240,20 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Remove(T item)
 	{
-        //CheckNull(item);
+        CheckNull(item);
 
-        //var current = Head;
+        var current = Head;
 
-        //for (var i = Count; i >= Count; i--)
-        //{
-        //    if (Compare(current.Data, item))
-        //    {
-        //        current.Next = 
-        //    }
-        //}
+        for (var i = Count; i >= Count; i--)
+        {
+            if (Compare(current.Data, item))
+            {
+                //current.Next =
+            }
+        }
 
         throw new NotImplementedException();
-	}
+    }
 
     public bool RemoveAll(T item)
     {

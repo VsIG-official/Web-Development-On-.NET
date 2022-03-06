@@ -511,6 +511,12 @@ public class CircularLinkedListTests
 
     #endregion AddFirst
 
+    #region AddAt
+
+
+
+    #endregion AddAt
+
     #region Clear
 
     [Fact]
@@ -737,6 +743,16 @@ public class CircularLinkedListTests
         Assert.True(actual);
     }
 
+    [Fact]
+    public void Contains_NullElement_StringType_ReturnsException()
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>();
+
+        // Assert
+        Assert.Throws<ArgumentNullException>(() => circularLinkedList.Contains(null));
+    }
+
     #endregion Contains
 
     #region CopyTo
@@ -762,9 +778,9 @@ public class CircularLinkedListTests
         var circularLinkedList = new CircularLinkedList<int>(expectedData);
 
         // Assert
-        foreach (var item in circularLinkedList)
+        foreach (int actual in circularLinkedList)
         {
-            Assert.Equal(expectedData, item);
+            Assert.Equal(expectedData, actual);
         }
     }
 
@@ -777,9 +793,9 @@ public class CircularLinkedListTests
         var circularLinkedList = new CircularLinkedList<string>(expectedData);
 
         // Assert
-        foreach (var item in circularLinkedList)
+        foreach (string actual in circularLinkedList)
         {
-            Assert.Equal(expectedData, item);
+            Assert.Equal(expectedData, actual);
         }
     }
 
@@ -796,9 +812,9 @@ public class CircularLinkedListTests
         var counter = 0;
 
         // Assert
-        foreach (var item in circularLinkedList)
+        foreach (int actual in circularLinkedList)
         {
-            Assert.Equal(sequence[counter], item);
+            Assert.Equal(sequence[counter], actual);
             counter++;
         }
     }
@@ -816,9 +832,9 @@ public class CircularLinkedListTests
         var counter = 0;
 
         // Assert
-        foreach (var item in circularLinkedList)
+        foreach (string actual in circularLinkedList)
         {
-            Assert.Equal(sequence[counter], item);
+            Assert.Equal(sequence[counter], actual);
             counter++;
         }
     }
