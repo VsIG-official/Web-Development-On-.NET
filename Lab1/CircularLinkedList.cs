@@ -160,7 +160,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
 
 	public bool Contains(T item)
 	{
-        CircularLinkedList<T>.CheckNull(item);
+        CheckNull(item);
 
         var current = Head;
 
