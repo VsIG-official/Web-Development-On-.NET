@@ -66,12 +66,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         }
     }
 
-    private void CheckCorrectIndex(int index)
+    private bool CheckCorrectIndex(int index)
     {
-        if (index > Count - 1)
+        if (index <= Count - 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(index));
+            return true;
         }
+
+        throw new ArgumentOutOfRangeException(nameof(index));
     }
 
     private void SetFirstElement(T item)
@@ -240,12 +242,15 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         var current = Head;
 
-        for (var i = Count; i >= Count; i--)
+        for (var i = 0; i < Count; i++)
         {
             if (Compare(current.Data, item))
             {
-                //current.Next =
+                //var 
+                //return;
             }
+
+            current = current.Next;
         }
 
         throw new NotImplementedException();

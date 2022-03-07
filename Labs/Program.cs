@@ -11,7 +11,7 @@ internal class Program
         list.Add(1);
         list.Add(2);
         list.Add(3);
-        list.AddAt(4, 1);
+        list.RemoveAt(2);
 
         Console.WriteLine(list.ToString());
     }
