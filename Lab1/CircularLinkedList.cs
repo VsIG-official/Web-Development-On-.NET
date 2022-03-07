@@ -261,9 +261,24 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         throw new NotImplementedException();
     }
 
-    public bool RemoveAt(T item)
+    public bool RemoveAt(int index)
     {
-        throw new NotImplementedException();
+        CheckCorrectIndex(index);
+
+        var current = Head;
+        var previous = Head;
+
+        for (var i = 0; i < index - 1; i++)
+        {
+            previous = current;
+            current = current.Next;
+        }
+
+        previous.Next = current.Next;
+
+        Count--;
+
+        return true;
     }
 
     public IEnumerator<T> GetEnumerator()
