@@ -10,8 +10,13 @@ internal class Program
 
         list.Add(1);
         list.Add(2);
+        list.Add(2);
+        list.Add(2);
         list.Add(3);
-        list.RemoveAt(2);
+        list.Add(2);
+        list.Add(1);
+
+        list.RemoveAll(2);
 
         Console.WriteLine(list.ToString());
     }

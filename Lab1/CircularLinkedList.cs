@@ -246,19 +246,21 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         {
             if (Compare(current.Data, item))
             {
-                //var 
-                //return;
+                return RemoveAt(i + 1);
             }
 
             current = current.Next;
         }
 
-        throw new NotImplementedException();
+        return false;
     }
 
-    public bool RemoveAll(T item)
+    public void RemoveAll(T item)
     {
-        throw new NotImplementedException();
+        for (int i = 0; i < Count; i++)
+        {
+            Remove(item);
+        }
     }
 
     public bool RemoveAt(int index)
