@@ -4,7 +4,7 @@ using Lab1.CircularLinkedListNode;
 
 namespace Lab1.CircularLinkedList;
 
-public class CircularLinkedList<T> : ICollection<T>, IEnumerable
+public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 {
     #region Fields
 
@@ -135,32 +135,34 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable
         SetTail();
     }
 
-    //public void AddAt(T item, int index)
-    //{
-    //    CheckNull(item);
-    //    CheckCorrectIndex(index);
+    public void AddAt(T item, int index)
+    {
+        CheckNull(item);
+        CheckCorrectIndex(index);
 
-    //    if (IsEmpty())
-    //    {
-    //        SetFirstElement(item);
-    //        return;
-    //    }
+        if (IsEmpty())
+        {
+            SetFirstElement(item);
+            return;
+        }
 
-    //    var current = Head;
-    //    var nextToCurrent = Head;
+        var current = Head;
 
-    //    for (var i = 0; i < index; i++)
-    //    {
-    //        current = current.Next;
-    //    }
+        for (var i = 0; i < index - 1; i++)
+        {
+            current = current.Next;
+        }
 
-    //    for (var i = 0; i < index + 1; i++)
-    //    {
-    //        nextToCurrent = nextToCurrent.Next;
-    //    }
+        var nextToCurrent = current;
+        nextToCurrent = nextToCurrent.Next;
 
+        var newNode = new CircularLinkedListNode<T>(item);
 
-    //}
+        current.Next = newNode;
+        newNode.Next = nextToCurrent;
+
+        Count++;
+    }
 
     private bool IsEmpty()
     {

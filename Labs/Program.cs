@@ -11,14 +11,7 @@ internal class Program
         list.Add(1);
         list.Add(2);
         list.Add(3);
-        list.Add(4);
-
-        foreach (var item in list.Reverse())
-        {
-            Console.WriteLine(item);
-        }
-
-        Console.WriteLine();
+        list.AddAt(4, 1);
 
         Console.WriteLine(list.ToString());
     }
