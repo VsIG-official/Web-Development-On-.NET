@@ -140,12 +140,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         CheckNull(item);
         CheckCorrectIndex(index);
 
-        if (IsEmpty())
-        {
-            SetFirstElement(item);
-            return;
-        }
-
         var current = Head;
 
         for (var i = 0; i < index - 1; i++)

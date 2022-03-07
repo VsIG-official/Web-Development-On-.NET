@@ -29,7 +29,7 @@ public class CircularLinkedListTests
         new object[] { "█Ã░╬ðØ" },
     };
 
-    public static IEnumerable<object[]> IntArrayTestData => new List<object[]>
+    public static IEnumerable<object[]> IntTwoElementsArrayTestData => new List<object[]>
     {
         new object[] { 0, 10 },
         new object[] { 1, 11 },
@@ -38,15 +38,35 @@ public class CircularLinkedListTests
         new object[] { int.MinValue, int.MinValue + 10 },
     };
 
-    public static IEnumerable<object[]> StringArrayTestData => new List<object[]>
+    public static IEnumerable<object[]> StringTwoElementsArrayTestData => new List<object[]>
     {
         new object[] { "Паляниця", "Полуниця" },
-        new object[] { "Русский военный корабль", "Иди далеко" },
+        new object[] { "Русский военный корабль", "Иди" },
         new object[] { "European Union", "NATO" },
         new object[] { "汉字", "漢字" },
         new object[] { "الْعَرَبِيَّة", "الْحُرُوف" },
         new object[] { "👾🤓😎🥸🤩🥳", "🧳🌂☂️🧵🧶👓" },
         new object[] { "█Ã░╬ðØ", "®ßƒ≡¾Æ" },
+    };
+
+    public static IEnumerable<object[]> IntMultipleElementsArrayTestData => new List<object[]>
+    {
+        new object[] { 0, 10, 100 },
+        new object[] { 1, 11, 111 },
+        new object[] { -1, -11, -111 },
+        new object[] { int.MaxValue, int.MaxValue - 10, int.MaxValue - 100 },
+        new object[] { int.MinValue, int.MinValue + 10, int.MinValue + 100 },
+    };
+
+    public static IEnumerable<object[]> StringMultipleElementsArrayTestData => new List<object[]>
+    {
+        new object[] { "Паляниця", "Полуниця", "ОлЕні, Олені" },
+        new object[] { "Русский военный корабль", "Иди", "далеко" },
+        new object[] { "European Union", "NATO", "IAEA" },
+        new object[] { "汉字", "漢字", "ッミツテヅ" },
+        new object[] { "الْعَرَبِيَّة", "الْحُرُوف", "هِجَائِي" },
+        new object[] { "👾🤓😎🥸🤩🥳", "🧳🌂☂️🧵🧶👓", "🐶🐱🐭🐹🐰🦊" },
+        new object[] { "█Ã░╬ðØ", "®ßƒ≡¾Æ", "123456" },
     };
 
     #endregion PremadeData
@@ -168,7 +188,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void IndexerGet_DifferentElements_IntType_ReturnsCorrectValues
         (int expectedHead, int expectedTail)
     {
@@ -187,7 +207,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void IndexerGet_DifferentElements_StringType_ReturnsCorrectValues
         (string expectedHead, string expectedTail)
     {
@@ -230,7 +250,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void IndexerGet_DifferentElements_IntType_ReturnsException
         (int head, int tail)
     {
@@ -245,7 +265,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void IndexerGet_DifferentElements_StringType_ReturnsException
         (string head, string tail)
     {
@@ -264,7 +284,7 @@ public class CircularLinkedListTests
     #region IndexerSet
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void IndexerSet_OneElement_IntType_ReturnsCorrectValues
         (int dataToChange, int expectedData)
     {
@@ -280,7 +300,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void IndexerSet_OneElement_StringType_ReturnsCorrectValues
         (string dataToChange, string expectedData)
     {
@@ -380,7 +400,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void Add_ConstructorWithParameter_IntType_ReturnsCorrectValues
         (int expectedHead, int expectedTail)
     {
@@ -401,7 +421,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void Add_ConstructorWithParameter_StringType_ReturnsCorrectValues
         (string expectedHead, string expectedTail)
     {
@@ -468,7 +488,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void AddFirst_ConstructorWithParameter_IntType_ReturnsCorrectValues
         (int expectedHead, int expectedTail)
     {
@@ -489,7 +509,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void AddFirst_ConstructorWithParameter_StringType_ReturnsCorrectValues
         (string expectedHead, string expectedTail)
     {
@@ -513,7 +533,51 @@ public class CircularLinkedListTests
 
     #region AddAt
 
+    [Theory]
+    [MemberData(nameof(IntMultipleElementsArrayTestData))]
+    public void AddAt_IntType_ReturnsCorrectValues
+        (int head, int expectedData, int tail)
+    {
+        // Arrange
+        var expectedCount = 3;
+        var circularLinkedList = new CircularLinkedList<int>();
 
+        circularLinkedList.Add(head);
+        circularLinkedList.Add(tail);
+
+        // Act
+        circularLinkedList.AddAt(expectedData, 1);
+
+        var actualCount = circularLinkedList.Count;
+        var actualData = circularLinkedList[1];
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedData, actualData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringMultipleElementsArrayTestData))]
+    public void AddAt_StringType_ReturnsCorrectValues
+        (string head, string expectedData, string tail)
+    {
+        // Arrange
+        var expectedCount = 3;
+        var circularLinkedList = new CircularLinkedList<string>();
+
+        circularLinkedList.Add(head);
+        circularLinkedList.Add(tail);
+
+        // Act
+        circularLinkedList.AddAt(expectedData, 1);
+
+        var actualCount = circularLinkedList.Count;
+        var actualData = circularLinkedList[1];
+
+        // Assert
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedData, actualData);
+    }
 
     #endregion AddAt
 
@@ -758,7 +822,7 @@ public class CircularLinkedListTests
     #region CopyTo
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void CopyTo_DifferentElements_IntType_ReturnsCorrectValues
         (int expectedFirstData, int expectedSecondData)
     {
@@ -776,7 +840,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void CopyTo_DifferentElements_StringType_ReturnsCorrectValues
         (string expectedFirstData, string expectedSecondData)
     {
@@ -834,7 +898,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void GetEnumerator_DifferentElements_IntType_ReturnsCorrectValues
         (int expectedFirstData, int expectedSecondData)
     {
@@ -854,7 +918,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void GetEnumerator_DifferentElements_StringType_ReturnsCorrectValues
         (string expectedFirstData, string expectedSecondData)
     {
@@ -906,7 +970,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(IntArrayTestData))]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
     public void ToString_DifferentElements_IntType_ReturnsCorrectValues
         (int firstElement, int secondElement)
     {
@@ -929,7 +993,7 @@ public class CircularLinkedListTests
     }
 
     [Theory]
-    [MemberData(nameof(StringArrayTestData))]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
     public void ToString_DifferentElements_StringType_ReturnsCorrectValues
         (string firstElement, string secondElement)
     {
