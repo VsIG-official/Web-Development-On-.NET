@@ -859,9 +859,75 @@ public class CircularLinkedListTests
 
     #endregion CopyTo
 
+    #region RemoveAt
+
+
+
+    #endregion RemoveAt
+
     #region Remove
 
+    [Theory]
+    [MemberData(nameof(IntMultipleElementsArrayTestData))]
+    public void Remove_MultipleElements_IntType_ReturnsCorrectValues
+        (int expectedHead, int data, int expectedTail)
+    {
+        // Arrange
+        var expectedCount = 2;
+        var circularLinkedList = new CircularLinkedList<int>(expectedHead);
+        circularLinkedList.Add(data);
+        circularLinkedList.Add(expectedTail);
 
+        // Act
+        circularLinkedList.Remove(data);
+
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
+
+        // Assert
+        Assert.DoesNotContain(data, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedHead, actualHeadData);
+        Assert.Equal(expectedTail, actualTailData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringMultipleElementsArrayTestData))]
+    public void Remove_MultipleElements_StringType_ReturnsCorrectValues
+        (string expectedHead, string data, string expectedTail)
+    {
+        // Arrange
+        var expectedCount = 2;
+        var circularLinkedList = new CircularLinkedList<string>(expectedHead);
+        circularLinkedList.Add(data);
+        circularLinkedList.Add(expectedTail);
+
+        // Act
+        circularLinkedList.Remove(data);
+
+        var actualCount = circularLinkedList.Count;
+        var actualHeadData = circularLinkedList.Head.Data;
+        var actualTailData = circularLinkedList.Tail.Data;
+
+        // Assert
+        Assert.DoesNotContain(data, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+        Assert.Equal(expectedHead, actualHeadData);
+        Assert.Equal(expectedTail, actualTailData);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void Remove_MultipleElements_StringType_ReturnsArgumentNullException
+        (string data)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(data);
+
+        // Assert
+        Assert.Throws<ArgumentNullException>(() => circularLinkedList.Remove(null));
+    }
 
     #endregion Remove
 
