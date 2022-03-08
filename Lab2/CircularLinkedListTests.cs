@@ -1038,6 +1038,7 @@ public class CircularLinkedListTests
         Assert.Equal(expectedCount, actualCount);
         Assert.Equal(expectedHead, actualHeadData);
         Assert.Equal(expectedTail, actualTailData);
+        Assert.False(circularLinkedList.Remove(data));
     }
 
     [Theory]
@@ -1063,6 +1064,7 @@ public class CircularLinkedListTests
         Assert.Equal(expectedCount, actualCount);
         Assert.Equal(expectedHead, actualHeadData);
         Assert.Equal(expectedTail, actualTailData);
+        Assert.False(circularLinkedList.Remove(data));
     }
 
     [Theory]
