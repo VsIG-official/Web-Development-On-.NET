@@ -294,12 +294,12 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         return true;
     }
 
-    public void RemoveFirst()
+    public void RemoveHead()
     {
         RemoveAt(0);
     }
 
-    public void RemoveLast()
+    public void RemoveTail()
     {
         RemoveAt(Count - 1);
     }

@@ -1175,11 +1175,11 @@ public class CircularLinkedListTests
 
     #endregion RemoveAll
 
-    #region RemoveFirst
+    #region RemoveHead
 
     [Theory]
     [MemberData(nameof(IntMultipleElementsArrayTestData))]
-    public void RemoveFirst_IntType_ReturnsCorrectValues
+    public void RemoveHead_IntType_ReturnsCorrectValues
         (int head, int middle, int tail)
     {
         // Arrange
@@ -1190,7 +1190,7 @@ public class CircularLinkedListTests
         circularLinkedList.Add(tail);
 
         // Act
-        circularLinkedList.RemoveFirst();
+        circularLinkedList.RemoveHead();
         var actualCount = circularLinkedList.Count;
 
         // Assert
@@ -1202,7 +1202,7 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(StringMultipleElementsArrayTestData))]
-    public void RemoveFirst_StringType_ReturnsCorrectValues
+    public void RemoveHead_StringType_ReturnsCorrectValues
         (string head, string middle, string tail)
     {
         // Arrange
@@ -1213,7 +1213,7 @@ public class CircularLinkedListTests
         circularLinkedList.Add(tail);
 
         // Act
-        circularLinkedList.RemoveFirst();
+        circularLinkedList.RemoveHead();
         var actualCount = circularLinkedList.Count;
 
         // Assert
@@ -1223,7 +1223,57 @@ public class CircularLinkedListTests
         Assert.Equal(expectedCount, actualCount);
     }
 
-    #endregion RemoveFirst
+    #endregion RemoveHead
+
+    #region RemoveTail
+
+    [Theory]
+    [MemberData(nameof(IntMultipleElementsArrayTestData))]
+    public void RemoveTail_IntType_ReturnsCorrectValues
+        (int head, int middle, int tail)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<int>(head);
+        circularLinkedList.Add(middle);
+        circularLinkedList.Add(tail);
+
+        // Act
+        circularLinkedList.RemoveTail();
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(tail, circularLinkedList);
+        Assert.Contains(head, circularLinkedList);
+        Assert.Contains(middle, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringMultipleElementsArrayTestData))]
+    public void RemoveTail_StringType_ReturnsCorrectValues
+        (string head, string middle, string tail)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<string>(head);
+        circularLinkedList.Add(middle);
+        circularLinkedList.Add(tail);
+
+        // Act
+        circularLinkedList.RemoveTail();
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(tail, circularLinkedList);
+        Assert.Contains(head, circularLinkedList);
+        Assert.Contains(middle, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    #endregion RemoveHead
 
     #region GetEnumerator
 
