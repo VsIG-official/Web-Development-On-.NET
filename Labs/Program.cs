@@ -12,7 +12,7 @@ internal class Program
         list.Add(2);
         list.Add(3);
 
-        list.Remove(3);
+        list.RemoveLast();
 
         Console.WriteLine(list.ToString());
         Console.WriteLine();
