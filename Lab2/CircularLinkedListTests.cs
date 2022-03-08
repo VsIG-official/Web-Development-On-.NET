@@ -1079,6 +1079,102 @@ public class CircularLinkedListTests
 
     #endregion Remove
 
+    #region RemoveAll
+
+    [Theory]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
+    public void RemoveAll_RemoveMiddleElements_IntType_ReturnsCorrectValues
+        (int firstElement, int secondElement)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<int>(firstElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(firstElement);
+
+        // Act
+        circularLinkedList.RemoveAll(secondElement);
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(secondElement, circularLinkedList);
+        Assert.Contains(firstElement, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
+    public void RemoveAll_RemoveMiddleElements_StringType_ReturnsCorrectValues
+        (string firstElement, string secondElement)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<string>(firstElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(firstElement);
+
+        // Act
+        circularLinkedList.RemoveAll(secondElement);
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(secondElement, circularLinkedList);
+        Assert.Contains(firstElement, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    [Theory]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
+    public void RemoveAll_RemoveEdgeElements_IntType_ReturnsCorrectValues
+        (int firstElement, int secondElement)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<int>(firstElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(firstElement);
+
+        // Act
+        circularLinkedList.RemoveAll(firstElement);
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(firstElement, circularLinkedList);
+        Assert.Contains(secondElement, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
+    public void RemoveAll_RemoveEdgeElements_StringType_ReturnsCorrectValues
+        (string firstElement, string secondElement)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<string>(firstElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(secondElement);
+        circularLinkedList.Add(firstElement);
+
+        // Act
+        circularLinkedList.RemoveAll(firstElement);
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(firstElement, circularLinkedList);
+        Assert.Contains(secondElement, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    #endregion RemoveAll
+
     #region GetEnumerator
 
     [Theory]
