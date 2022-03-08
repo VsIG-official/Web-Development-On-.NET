@@ -178,6 +178,23 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         }
     }
 
+    private void SetHead(T item)
+    {
+        var currentNode = Head;
+
+        for (var i = 0; i < Count; i++)
+        {
+            if (i == Count - 1)
+            {
+                Tail = currentNode;
+            }
+
+            currentNode = currentNode.Next;
+        }
+
+        Tail.Next = Head;
+    }
+
     private void SetTail()
     {
         var currentNode = Head;
@@ -246,7 +263,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         {
             if (Compare(current.Data, item))
             {
-                return RemoveAt(i + 1);
+                return RemoveAt(i);
             }
 
             current = current.Next;
@@ -268,9 +285,9 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         CheckCorrectIndex(index);
 
         var current = Head;
-        var previous = Head;
+        var previous = Tail;
 
-        for (var i = 0; i < index - 1; i++)
+        for (var i = 0; i < index; i++)
         {
             previous = current;
             current = current.Next;
@@ -278,9 +295,28 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         previous.Next = current.Next;
 
+        if (index == 0)
+        {
+            Head = previous.Next;
+        }
+        else if (index == Count - 1)
+        {
+            Tail = previous;
+        }
+
         Count--;
 
         return true;
+    }
+
+    public void RemoveFirst()
+    {
+        RemoveAt(0);
+    }
+
+    public void RemoveLast()
+    {
+        RemoveAt(Count);
     }
 
     public IEnumerator<T> GetEnumerator()
