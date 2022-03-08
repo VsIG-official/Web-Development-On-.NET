@@ -1175,6 +1175,56 @@ public class CircularLinkedListTests
 
     #endregion RemoveAll
 
+    #region RemoveFirst
+
+    [Theory]
+    [MemberData(nameof(IntMultipleElementsArrayTestData))]
+    public void RemoveFirst_IntType_ReturnsCorrectValues
+        (int head, int middle, int tail)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<int>(head);
+        circularLinkedList.Add(middle);
+        circularLinkedList.Add(tail);
+
+        // Act
+        circularLinkedList.RemoveFirst();
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(head, circularLinkedList);
+        Assert.Contains(middle, circularLinkedList);
+        Assert.Contains(tail, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringMultipleElementsArrayTestData))]
+    public void RemoveFirst_StringType_ReturnsCorrectValues
+        (string head, string middle, string tail)
+    {
+        // Arrange
+        var expectedCount = 2;
+
+        var circularLinkedList = new CircularLinkedList<string>(head);
+        circularLinkedList.Add(middle);
+        circularLinkedList.Add(tail);
+
+        // Act
+        circularLinkedList.RemoveFirst();
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(head, circularLinkedList);
+        Assert.Contains(middle, circularLinkedList);
+        Assert.Contains(tail, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    #endregion RemoveFirst
+
     #region GetEnumerator
 
     [Theory]
