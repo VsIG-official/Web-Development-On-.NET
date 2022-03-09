@@ -66,10 +66,8 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
             return;
         }
 
-        Tail = new CircularLinkedListNode<T>(item)
-        {
-            Next = Head
-        };
+        Tail = new CircularLinkedListNode<T>(item);
+        Tail.Next = Head;
 
         var current = GetNodeInRange(Head, Count - 1);
 
