@@ -40,12 +40,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         {
             CheckCorrectIndex(index);
 
-            var current = Head;
-
-            for (int i = 0; i < index; i++)
-            {
-                current = current.Next;
-            }
+            var current = IterateThroughList(Head, index);
 
             return current.Data;
         }
@@ -55,39 +50,10 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
             CheckCorrectIndex(index);
 
-            var current = Head;
-
-            for (int i = 0; i < index; i++)
-            {
-                current = current.Next;
-            }
+            var current = IterateThroughList(Head, index);
 
             current.Data = value;
         }
-    }
-
-    private bool CheckCorrectIndex(int index)
-    {
-        if (index <= Count - 1)
-        {
-            return true;
-        }
-
-        throw new ArgumentOutOfRangeException(nameof(index));
-    }
-
-    private void SetFirstElement(T item)
-    {
-        CheckNull(item);
-
-        var node = new CircularLinkedListNode<T>(item);
-
-        Head = node;
-        Head.Next = node;
-        Tail = node;
-        Tail.Next = node;
-
-        Count++;
     }
 
     public void Add(T item)
@@ -158,41 +124,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         newNode.Next = nextToCurrent;
 
         Count++;
-    }
-
-    private bool IsEmpty()
-    {
-        if (Count == 0)
-        {
-            return true;
-        }
-
-        return false;
-    }
-
-    private static void CheckNull(T item)
-    {
-        if (item == null)
-        {
-            throw new ArgumentNullException(nameof(item));
-        }
-    }
-
-    private void SetTail()
-    {
-        var currentNode = Head;
-
-        for (var i = 0; i < Count; i++)
-        {
-            if (i == Count - 1)
-            {
-                Tail = currentNode;
-            }
-
-            currentNode = currentNode.Next;
-        }
-
-        Tail.Next = Head;
     }
 
     public void Clear()
@@ -318,6 +249,76 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
     IEnumerator IEnumerable.GetEnumerator()
     {
         return GetEnumerator();
+    }
+
+    private static CircularLinkedListNode<T> IterateThroughList
+        (CircularLinkedListNode<T> node, int index)
+    {
+        for (int i = 0; i < index; i++)
+        {
+            node = node.Next;
+        }
+
+        return node;
+    }
+
+    private bool CheckCorrectIndex(int index)
+    {
+        if (index <= Count - 1)
+        {
+            return true;
+        }
+
+        throw new ArgumentOutOfRangeException(nameof(index));
+    }
+
+    private void SetFirstElement(T item)
+    {
+        CheckNull(item);
+
+        var node = new CircularLinkedListNode<T>(item);
+
+        Head = node;
+        Head.Next = node;
+        Tail = node;
+        Tail.Next = node;
+
+        Count++;
+    }
+
+    private bool IsEmpty()
+    {
+        if (Count == 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    private static void CheckNull(T item)
+    {
+        if (item == null)
+        {
+            throw new ArgumentNullException(nameof(item));
+        }
+    }
+
+    private void SetTail()
+    {
+        var currentNode = Head;
+
+        for (var i = 0; i < Count; i++)
+        {
+            if (i == Count - 1)
+            {
+                Tail = currentNode;
+            }
+
+            currentNode = currentNode.Next;
+        }
+
+        Tail.Next = Head;
     }
 
     public override string ToString()
