@@ -40,7 +40,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         {
             CheckCorrectIndex(index);
 
-            var current = IterateThroughList(Head, index);
+            var current = GetNodeInRange(Head, index);
 
             return current.Data;
         }
@@ -50,7 +50,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
             CheckCorrectIndex(index);
 
-            var current = IterateThroughList(Head, index);
+            var current = GetNodeInRange(Head, index);
 
             current.Data = value;
         }
@@ -71,12 +71,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
             Next = Head
         };
 
-        var current = Head;
-
-        for (int i = 0; i < Count - 1; i++)
-        {
-            current = current.Next;
-        }
+        var current = GetNodeInRange(Head, Count - 1);
 
         current.Next = Tail;
 
@@ -108,15 +103,9 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         CheckNull(item);
         CheckCorrectIndex(index);
 
-        var current = Head;
+        var current = GetNodeInRange(Head, index - 1);
 
-        for (var i = 0; i < index - 1; i++)
-        {
-            current = current.Next;
-        }
-
-        var nextToCurrent = current;
-        nextToCurrent = nextToCurrent.Next;
+        var nextToCurrent = current.Next;
 
         var newNode = new CircularLinkedListNode<T>(item);
 
@@ -251,15 +240,15 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         return GetEnumerator();
     }
 
-    private static CircularLinkedListNode<T> IterateThroughList
-        (CircularLinkedListNode<T> node, int index)
+    private static CircularLinkedListNode<T> GetNodeInRange
+        (CircularLinkedListNode<T> startingNode, int position)
     {
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < position; i++)
         {
-            node = node.Next;
+            startingNode = startingNode.Next;
         }
 
-        return node;
+        return startingNode;
     }
 
     private bool CheckCorrectIndex(int index)
