@@ -6,17 +6,8 @@ internal class Program
 {
     private static void Main()
     {
-        CircularLinkedList<int> list = new();
 
-        list.Add(1);
-        list.Add(2);
-        list.Add(3);
-
-        list.RemoveTail();
-
-        Console.WriteLine(list.ToString());
-        Console.WriteLine();
-        Console.WriteLine(list.Head.Data);
-        Console.WriteLine(list.Tail.Data);
     }
+
+
 }
