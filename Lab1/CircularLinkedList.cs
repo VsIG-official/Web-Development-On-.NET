@@ -198,14 +198,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         previous.Next = current.Next;
 
-        if (index == 0)
-        {
-            Head = previous.Next;
-        }
-        else if (index == Count - 1)
-        {
-            Tail = previous;
-        }
+        ChangeEdgeNodes(previous, index);
 
         Count--;
 
@@ -306,6 +299,18 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         }
 
         Tail.Next = Head;
+    }
+
+    private void ChangeEdgeNodes(CircularLinkedListNode<T> previous, int index)
+    {
+        if (index == 0)
+        {
+            Head = previous.Next;
+        }
+        else if (index == Count - 1)
+        {
+            Tail = previous;
+        }
     }
 
     public override string ToString()
