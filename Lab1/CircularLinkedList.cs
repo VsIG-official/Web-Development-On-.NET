@@ -107,8 +107,8 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         var nodeToInsert = new CircularLinkedListNode<T>(item);
 
-        current.Next = newNode;
-        newNode.Next = nextToCurrent;
+        current.Next = nodeToInsert;
+        nodeToInsert.Next = next;
 
         Count++;
     }
