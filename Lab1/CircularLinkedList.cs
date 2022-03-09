@@ -103,9 +103,9 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         var current = GetNodeInRange(Head, index - 1);
 
-        var nextToCurrent = current.Next;
+        var next = current.Next;
 
-        var newNode = new CircularLinkedListNode<T>(item);
+        var nodeToInsert = new CircularLinkedListNode<T>(item);
 
         current.Next = newNode;
         newNode.Next = nextToCurrent;
