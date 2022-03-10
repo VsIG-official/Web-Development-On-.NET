@@ -177,7 +177,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
     {
         CheckNull(item);
 
-        for (int i = 0; i < Count; i++)
+        for (int i = Count; i > 0; i--)
         {
             Remove(item);
         }
