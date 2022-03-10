@@ -1175,6 +1175,52 @@ public class CircularLinkedListTests
         Assert.Equal(expectedCount, actualCount);
     }
 
+    [Theory]
+    [MemberData(nameof(IntTestData))]
+    public void RemoveAll_AllSameElements_IntType_ReturnsCorrectValues
+        (int firstElement)
+    {
+        // Arrange
+        var expectedCount = 0;
+
+        var circularLinkedList = new CircularLinkedList<int>(firstElement);
+        circularLinkedList.Add(firstElement);
+        circularLinkedList.Add(firstElement);
+        circularLinkedList.Add(firstElement);
+        circularLinkedList.Add(firstElement);
+
+        // Act
+        circularLinkedList.RemoveAll(firstElement);
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(firstElement, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTestData))]
+    public void RemoveAll_AllSameElements_StringType_ReturnsCorrectValues
+        (string firstElement)
+    {
+        // Arrange
+        var expectedCount = 0;
+
+        var circularLinkedList = new CircularLinkedList<string>(firstElement);
+        circularLinkedList.Add(firstElement);
+        circularLinkedList.Add(firstElement);
+        circularLinkedList.Add(firstElement);
+        circularLinkedList.Add(firstElement);
+
+        // Act
+        circularLinkedList.RemoveAll(firstElement);
+        var actualCount = circularLinkedList.Count;
+
+        // Assert
+        Assert.DoesNotContain(firstElement, circularLinkedList);
+        Assert.Equal(expectedCount, actualCount);
+    }
+
     #endregion RemoveAll
 
     #region RemoveHead
