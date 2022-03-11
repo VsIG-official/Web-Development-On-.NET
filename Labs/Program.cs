@@ -14,7 +14,8 @@ internal class Program
 
         //AddExample(cars);
         //RemoveExample(cars);
-        ForeachExample(cars);
+        //ForeachExample(cars);
+        OtherFeaturesExample(cars);
     }
 
     private static void AddExample(Car[] cars)
@@ -94,5 +95,33 @@ internal class Program
         }
 
         Console.WriteLine("//////");
+    }
+
+    private static void OtherFeaturesExample(Car[] cars)
+    {
+        var carsList = new CircularLinkedList<Car>(cars[0]);
+        carsList.Add(cars[1]);
+        carsList.Add(cars[2]);
+
+        Console.WriteLine(carsList.Contains(cars[0])); // True;
+
+        Console.WriteLine("//////");
+
+        Car[] carsCopy = new Car[carsList.Count];
+        carsList.CopyTo(carsCopy, 0);
+
+        carsList.Clear();
+
+        Console.WriteLine(carsList.ToString()); // -_-
+
+        Console.WriteLine("//////");
+
+        Console.WriteLine(carsCopy[0]); // Toyota
+
+        Console.WriteLine("//////");
+
+        carsCopy[0] = carsCopy[1];
+
+        Console.WriteLine(carsCopy[0]); // Nissan
     }
 }
