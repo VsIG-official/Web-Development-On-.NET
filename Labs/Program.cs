@@ -13,17 +13,26 @@ internal class Program
         Car[] cars = new Car[] { firstCar, secondCar, thirdCar };
 
         //AddExample(cars);
-        RemoveExample(cars);
+        //RemoveExample(cars);
     }
 
     private static void AddExample(Car[] cars)
     {
         var carsList = new CircularLinkedList<Car>();
         carsList.Add(cars[0]);
+
+        Console.WriteLine(carsList.ToString()); // Toyota
+        Console.WriteLine("///////");
+
         carsList.AddFirst(cars[1]);
+
+        Console.WriteLine(carsList.ToString()); // Nissan Toyota
+        Console.WriteLine("///////");
+
         carsList.AddAt(cars[2], 1);
 
         Console.WriteLine(carsList.ToString()); // Nissan Honda Toyota
+        Console.WriteLine("///////");
     }
 
     private static void RemoveExample(Car[] cars)
