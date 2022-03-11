@@ -14,6 +14,7 @@ internal class Program
 
         //AddExample(cars);
         //RemoveExample(cars);
+        ForeachExample(cars);
     }
 
     private static void AddExample(Car[] cars)
@@ -71,5 +72,27 @@ internal class Program
         carsList.RemoveAll(cars[0]);
         Console.WriteLine(carsList.ToString()); // -_-
         Console.WriteLine("///////");
+    }
+
+    private static void ForeachExample(Car[] cars)
+    {
+        var carsList = new CircularLinkedList<Car>();
+        carsList.Add(cars[0]);
+        carsList.Add(cars[1]);
+        carsList.Add(cars[2]);
+
+        foreach (var car in carsList)
+        {
+            Console.WriteLine(car);
+        }
+
+        Console.WriteLine("//////");
+
+        foreach (var car in carsList.Reverse())
+        {
+            Console.WriteLine(car);
+        }
+
+        Console.WriteLine("//////");
     }
 }
