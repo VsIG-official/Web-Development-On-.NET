@@ -623,7 +623,7 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(IntTestData))]
-    public void Clear_ConstructorWithParameters_AddFirst_IntType_ReturnsCorrectValues
+    public void Clear_ConstructorNoParameters_AddFirst_IntType_ReturnsCorrectValues
         (int expectedData)
     {
         // Arrange
@@ -645,7 +645,7 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(StringTestData))]
-    public void Clear_ConstructorWithParameters_AddFirst_StringType_ReturnsCorrectValues
+    public void Clear_ConstructorNoParameters_AddFirst_StringType_ReturnsCorrectValues
         (string expectedData)
     {
         // Arrange
@@ -667,7 +667,7 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(IntTestData))]
-    public void Clear_ConstructorWithParameters_Add_IntType_ReturnsCorrectValues
+    public void Clear_ConstructorNoParameters_Add_IntType_ReturnsCorrectValues
         (int expectedData)
     {
         // Arrange
@@ -689,7 +689,7 @@ public class CircularLinkedListTests
 
     [Theory]
     [MemberData(nameof(StringTestData))]
-    public void Clear_ConstructorWithParameters_Add_StringType_ReturnsCorrectValues
+    public void Clear_ConstructorNoParameters_Add_StringType_ReturnsCorrectValues
         (string expectedData)
     {
         // Arrange
@@ -1184,10 +1184,11 @@ public class CircularLinkedListTests
         var expectedCount = 0;
 
         var circularLinkedList = new CircularLinkedList<int>(firstElement);
-        circularLinkedList.Add(firstElement);
-        circularLinkedList.Add(firstElement);
-        circularLinkedList.Add(firstElement);
-        circularLinkedList.Add(firstElement);
+
+        for (int i = 0; i < 4; i++)
+        {
+            circularLinkedList.Add(firstElement);
+        }
 
         // Act
         circularLinkedList.RemoveAll(firstElement);
@@ -1207,10 +1208,11 @@ public class CircularLinkedListTests
         var expectedCount = 0;
 
         var circularLinkedList = new CircularLinkedList<string>(firstElement);
-        circularLinkedList.Add(firstElement);
-        circularLinkedList.Add(firstElement);
-        circularLinkedList.Add(firstElement);
-        circularLinkedList.Add(firstElement);
+
+        for (int i = 0; i < 4; i++)
+        {
+            circularLinkedList.Add(firstElement);
+        }
 
         // Act
         circularLinkedList.RemoveAll(firstElement);
