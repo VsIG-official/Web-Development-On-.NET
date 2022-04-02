@@ -207,7 +207,6 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>, ICloneable
         ChangeEdgeNodes(previous, index);
 
         Count--;
-
         Removed?.Invoke();
         return true;
     }
