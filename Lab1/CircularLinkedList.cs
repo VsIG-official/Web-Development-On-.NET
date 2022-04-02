@@ -4,7 +4,7 @@ using Lab1.CircularLinkedListNode;
 
 namespace Lab1.CircularLinkedList;
 
-public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
+public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>, ICloneable
 {
     #region Fields
 
@@ -77,7 +77,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         current.Next = Tail;
 
         Count++;
-        Added();
+        Added?.Invoke();
     }
 
     public void AddFirst(T item)
@@ -97,7 +97,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         Count++;
         SetTail();
-        Added();
+        Added?.Invoke();
     }
 
     public void AddAt(T item, int index)
@@ -115,14 +115,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         nodeToInsert.Next = next;
 
         Count++;
-        Added();
+        Added?.Invoke();
     }
 
     public void Clear()
     {
         Head = Tail = null;
         Count = 0;
-        Removed();
+        Removed?.Invoke();
     }
 
     public bool Contains(T item)
@@ -208,7 +208,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         Count--;
 
-        Removed();
+        Removed?.Invoke();
         return true;
     }
 
@@ -271,7 +271,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         Tail.Next = node;
 
         Count++;
-        Added();
+        Added?.Invoke();
     }
 
     private bool IsEmpty()
@@ -336,6 +336,20 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         }
 
         return list.ToString();
+    }
+
+    public object Clone()
+    {
+        CircularLinkedList<T> list = new();
+        var current = Head;
+
+        for (int i = 0; i < Count; i++)
+        {
+            list.Add(current.Data);
+            current = current.Next;
+        }
+
+        return list;
     }
 
     #endregion Methods

@@ -859,6 +859,44 @@ public class CircularLinkedListTests
 
     #endregion CopyTo
 
+    #region Clone
+
+    [Theory]
+    [MemberData(nameof(IntTwoElementsArrayTestData))]
+    public void Clone_DifferentElements_IntType_ReturnsCorrectValues
+        (int expectedFirstData, int expectedSecondData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<int>(expectedFirstData);
+        circularLinkedList.Add(expectedSecondData);
+
+        // Act
+        var actual = (CircularLinkedList<int>)circularLinkedList.Clone();
+
+        // Assert
+        Assert.Equal(circularLinkedList[0], actual[0]);
+        Assert.Equal(circularLinkedList[1], actual[1]);
+    }
+
+    [Theory]
+    [MemberData(nameof(StringTwoElementsArrayTestData))]
+    public void Clone_DifferentElements_StringType_ReturnsCorrectValues
+        (string expectedFirstData, string expectedSecondData)
+    {
+        // Arrange
+        var circularLinkedList = new CircularLinkedList<string>(expectedFirstData);
+        circularLinkedList.Add(expectedSecondData);
+
+        // Act
+        var actual = (CircularLinkedList<string>)circularLinkedList.Clone();
+
+        // Assert
+        Assert.Equal(circularLinkedList[0], actual[0]);
+        Assert.Equal(circularLinkedList[1], actual[1]);
+    }
+
+    #endregion Clone
+
     #region RemoveAt
 
     [Theory]
