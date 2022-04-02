@@ -125,6 +125,11 @@ internal class Program
         Console.WriteLine(s_listing.Contains(cars[0])); // True;
         Console.WriteLine("//////");
 
+        CircularLinkedList<Car> carClone = (CircularLinkedList<Car>)s_listing.Clone();
+        Console.WriteLine(carClone.ToString());
+
+        // Toyota Nissan Honda
+
         Car[] carsCopy = new Car[s_listing.Count];
         s_listing.CopyTo(carsCopy, 0);
 
