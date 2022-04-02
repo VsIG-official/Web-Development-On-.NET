@@ -15,6 +15,9 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
     public bool IsReadOnly => false;
 
+    public event Action Added;
+    public event Action Removed;
+
     #endregion Fields
 
     #region Constructors
@@ -74,6 +77,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         current.Next = Tail;
 
         Count++;
+        Added();
     }
 
     public void AddFirst(T item)
@@ -92,8 +96,8 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         };
 
         Count++;
-
         SetTail();
+        Added();
     }
 
     public void AddAt(T item, int index)
@@ -111,12 +115,14 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         nodeToInsert.Next = next;
 
         Count++;
+        Added();
     }
 
     public void Clear()
     {
         Head = Tail = null;
         Count = 0;
+        Removed();
     }
 
     public bool Contains(T item)
@@ -202,6 +208,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
 
         Count--;
 
+        Removed();
         return true;
     }
 
@@ -264,6 +271,7 @@ public class CircularLinkedList<T> : ICollection<T>, IEnumerable<T>
         Tail.Next = node;
 
         Count++;
+        Added();
     }
 
     private bool IsEmpty()

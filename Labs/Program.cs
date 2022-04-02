@@ -4,6 +4,8 @@ namespace Labs;
 
 internal class Program
 {
+    private static CircularLinkedList<Car> s_listing = new();
+
     private static void Main()
     {
         Car firstCar = new(1, "Toyota", "Red");
@@ -12,116 +14,138 @@ internal class Program
 
         Car[] cars = new Car[] { firstCar, secondCar, thirdCar };
 
-        //AddExample(cars);
-        //RemoveExample(cars);
-        //ForeachExample(cars);
+        s_listing.Added += OnAdded;
+        s_listing.Removed += OnRemoved;
+
+        RunAllExamples(cars);
+    }
+
+    private static void RunAllExamples(Car[] cars)
+    {
+        AddExample(cars);
+        RemoveExample(cars);
+        ForeachExample(cars);
         OtherFeaturesExample(cars);
+    }
+
+    private static void OnAdded()
+    {
+        Console.WriteLine("New element added");
+        Console.WriteLine(s_listing.ToString());
+    }
+
+    private static void OnRemoved()
+    {
+        Console.WriteLine("Element removed");
+        Console.WriteLine(s_listing.ToString());
     }
 
     private static void AddExample(Car[] cars)
     {
-        var carsList = new CircularLinkedList<Car>();
-        carsList.Add(cars[0]);
+        s_listing.Add(cars[0]);
 
-        Console.WriteLine(carsList.ToString()); // Toyota
-        Console.WriteLine("///////");
+        // Toyota
 
-        carsList.AddFirst(cars[1]);
+        s_listing.AddFirst(cars[1]);
 
-        Console.WriteLine(carsList.ToString()); // Nissan Toyota
-        Console.WriteLine("///////");
+        // Nissan Toyota
+        
+        s_listing.AddAt(cars[2], 1);
 
-        carsList.AddAt(cars[2], 1);
+        // Nissan Honda Toyota
 
-        Console.WriteLine(carsList.ToString()); // Nissan Honda Toyota
-        Console.WriteLine("///////");
+        ResetList();
     }
 
     private static void RemoveExample(Car[] cars)
     {
-        var carsList = new CircularLinkedList<Car>();
-        carsList.Add(cars[2]);
-        carsList.Add(cars[0]);
-        carsList.Add(cars[0]);
-        carsList.Add(cars[0]);
-        carsList.Add(cars[1]);
-        carsList.Add(cars[2]);
-        Console.WriteLine(carsList.ToString()); // Honda Toyota Toyota Toyota Nissan Honda
+        s_listing.Add(cars[2]);
+        s_listing.Add(cars[0]);
+        s_listing.Add(cars[0]);
+        s_listing.Add(cars[0]);
+        s_listing.Add(cars[1]);
+        s_listing.Add(cars[2]);
 
-        Console.WriteLine("///////");
+        // Honda Toyota Toyota Toyota Nissan Honda
 
-        carsList.RemoveAt(2);
-        Console.WriteLine(carsList.ToString()); // Honda Toyota Toyota Nissan Honda
+        s_listing.RemoveAt(2);
 
-        Console.WriteLine("///////");
+        // Honda Toyota Toyota Nissan Honda
 
-        carsList.Remove(cars[1]);
-        Console.WriteLine(carsList.ToString()); // Honda Toyota Toyota Honda
+        s_listing.Remove(cars[1]);
 
-        Console.WriteLine("///////");
+        // Honda Toyota Toyota Honda
 
-        carsList.RemoveHead();
-        Console.WriteLine(carsList.ToString()); // Toyota Toyota Honda
+        s_listing.RemoveHead();
 
-        Console.WriteLine("///////");
+        // Toyota Toyota Honda
 
-        carsList.RemoveTail();
-        Console.WriteLine(carsList.ToString()); // Toyota Toyota
+        s_listing.RemoveTail();
 
-        Console.WriteLine("///////");
+        // Toyota Toyota
 
-        carsList.RemoveAll(cars[0]);
-        Console.WriteLine(carsList.ToString()); // -_-
-        Console.WriteLine("///////");
+        s_listing.RemoveAll(cars[0]);
+
+        // Toyota
+        // -_-
     }
 
     private static void ForeachExample(Car[] cars)
     {
-        var carsList = new CircularLinkedList<Car>();
-        carsList.Add(cars[0]);
-        carsList.Add(cars[1]);
-        carsList.Add(cars[2]);
+        s_listing.Add(cars[0]);
+        s_listing.Add(cars[1]);
+        s_listing.Add(cars[2]);
 
-        foreach (var car in carsList)
+        // Toyota Nissan Honda
+
+        foreach (var car in s_listing)
         {
             Console.WriteLine(car);
         }
 
         Console.WriteLine("//////");
 
-        foreach (var car in carsList.Reverse())
+        foreach (var car in s_listing.Reverse())
         {
             Console.WriteLine(car);
         }
+        Console.WriteLine();
 
-        Console.WriteLine("//////");
+        ResetList();
     }
 
     private static void OtherFeaturesExample(Car[] cars)
     {
-        var carsList = new CircularLinkedList<Car>(cars[0]);
-        carsList.Add(cars[1]);
-        carsList.Add(cars[2]);
+        s_listing.Add(cars[0]);
+        s_listing.Add(cars[1]);
+        s_listing.Add(cars[2]);
 
-        Console.WriteLine(carsList.Contains(cars[0])); // True;
+        // Toyota Nissan Honda
 
+        Console.WriteLine(s_listing.Contains(cars[0])); // True;
         Console.WriteLine("//////");
 
-        Car[] carsCopy = new Car[carsList.Count];
-        carsList.CopyTo(carsCopy, 0);
+        Car[] carsCopy = new Car[s_listing.Count];
+        s_listing.CopyTo(carsCopy, 0);
 
-        carsList.Clear();
+        s_listing.Clear();
 
-        Console.WriteLine(carsList.ToString()); // -_-
-
+        Console.WriteLine(s_listing.ToString()); // -_-
         Console.WriteLine("//////");
 
         Console.WriteLine(carsCopy[0]); // Toyota
-
         Console.WriteLine("//////");
 
         carsCopy[0] = carsCopy[1];
 
         Console.WriteLine(carsCopy[0]); // Nissan
+        Console.WriteLine();
+
+        ResetList();
+    }
+
+    private static void ResetList()
+    {
+        s_listing.Clear();
     }
 }
