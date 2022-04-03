@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBooking", "HotelBooking\HotelBooking.csproj", "{74EFA765-E53C-44D9-A5BD-D1F1721692B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBooking.DAL", "HotelBooking\HotelBooking.DAL.csproj", "{74EFA765-E53C-44D9-A5BD-D1F1721692B8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

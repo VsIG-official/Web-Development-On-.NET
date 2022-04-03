@@ -12,7 +12,7 @@ namespace NLayerApp.DAL.EF
 
         static MobileContext()
         {
-            Database.SetInitializer<MobileContext>(new StoreDbInitializer());
+            Database.SetInitializer(new StoreDbInitializer());
         }
         public MobileContext(string connectionString)
             : base(connectionString)

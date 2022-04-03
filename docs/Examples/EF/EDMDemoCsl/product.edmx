@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="productModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="productModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityContainer Name="productModelStoreContainer">
-          <EntitySet Name="Categories" EntityType="productModel.Store.Categories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Products" EntityType="productModel.Store.Products" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Region" EntityType="productModel.Store.Region" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Territories" EntityType="productModel.Store.Territories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Categories" EntityType="productModel.Store.Categories" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Products" EntityType="productModel.Store.Products" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Region" EntityType="productModel.Store.Region" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Territories" EntityType="productModel.Store.Territories" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_Products_Categories" Association="productModel.Store.FK_Products_Categories">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Products" EntitySet="Products" />
@@ -89,7 +89,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="productModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="productModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityContainer Name="productContext" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="productModel.Category" />
           <EntitySet Name="Products" EntityType="productModel.Product" />
@@ -179,7 +179,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="productModelStoreContainer" CdmEntityContainer="productContext">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="productModel.Category">
@@ -230,7 +230,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -245,6 +245,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams />
   </Designer>
 </edmx:Edmx>
