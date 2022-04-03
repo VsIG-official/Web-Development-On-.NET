@@ -45,6 +45,4 @@ public class CircularLinkedListNodeTests
         Assert.Equal(expected, actualData);
         Assert.Null(actualNext);
     }
-
-    //TODO: make test for custom type (like animal)
 }
