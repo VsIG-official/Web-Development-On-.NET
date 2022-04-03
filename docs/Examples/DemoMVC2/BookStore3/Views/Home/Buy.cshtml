@@ -1,0 +1,46 @@
+﻿@model BookStore3.Models.Purchase
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <div>
+    <h3>Форма оформления покупки</h3>
+
+    @using (Html.BeginForm("Buy", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group">
+            @Html.HiddenFor(m => m.BookId)
+
+            @Html.LabelFor(m => m.Person, "Введите свое имя", new { @class = "col-md-2 control-label" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(m => m.Person, new { @class = "form-control" })
+            </div>
+        </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Address, "Введите адрес", new { @class = "col-md-2 control-label" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-4">
+                    <p><input type="submit" value="Купить" class="btn btn-default" /></p>
+                </div>
+            </div>
+      }
+
+                @*<form method="post" action="">
+                        <input type="hidden" value="@ViewBag.BookId" name="BookId" />
+                        <table>
+                            <tr><td><p>Введите свое имя </p></td>
+                                <td><input type="text" name="Person" /> </td></tr>
+                            <tr><td><p>Введите адрес :</p></td><td>
+                               <input type="text" name="Address" /> </td></tr>
+                            <tr><td><input type="submit" value="Отправить" /> </td>
+                            <td></td></tr>
+                        </table>
+                    </form>*@
+            </div>
+            @section Footer {
+                asp.net mvc 5
+            }
+

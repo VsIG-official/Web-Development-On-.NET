@@ -1,0 +1,92 @@
+﻿@using BookStore3.Models
+@model PagedList.IPagedList<Book>
+    
+@*for Html.PagedListPager*@
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+    <div>
+        <h3>Список книг</h3>
+
+        <!--Modal dialog with mvc model-->
+        <div id="modDialog" class="modal fade">
+            <div id="dialogContent" class="modal-dialog modal-sm"></div>
+        </div>
+
+        <p>@Html.ActionLink("Поиск книги по автору", "Search")</p>
+        <p>@Html.ActionLink("Добавить книгу", "CreateBook")</p>
+        
+        <table class="table table-striped">
+            <tr class="header">
+                <td><p>Название книги</p></td>
+                <td><p>Автор</p></td>
+                <td><p>Цена</p></td>
+                <td></td>
+            </tr>
+            @foreach (Book b in Model)
+            {
+                <tr>
+                    <td><p>@b.Name</p></td> 
+                    <td><p>@b.Author</p></td>
+                    <td><p>@b.Price</p></td>
+                    <td>
+                        <p>
+                            @Html.ActionLink("Редактировать", "EditBook", new { id = b.Id }) |
+                            @Html.ActionLink("Удалить", "DeleteBook", new { id = b.Id }) |
+                            @Html.ActionLink("Детали", "Details", new { id = b.Id }, new { @class = "bookItem" })|
+                            @Html.ActionLink("Купить", "Buy", new { id = b.Id })
+
+                        </p>
+                    </td>
+                </tr>
+            }
+        </table>
+       
+            @*@foreach (Book b in Model)
+            {           
+                <p>@b.Name</p> 
+                <p>@b.Author</p>
+                <p>@b.Price</p>                
+                    <p>
+                        @Html.ActionLink("Редактировать", "EditBook", new { id = b.Id }) |
+                        @Html.ActionLink("Удалить", "DeleteBook", new { id = b.Id }) |
+                        @Html.ActionLink("Детали", "Details", new { id = b.Id }, new { @class = "bookItem" })|
+                        @Html.ActionLink("Купить", "Buy", new { id = b.Id })                       
+                    </p>              
+            }*@
+        
+    </div>
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("IndexPaged", new { page }))
+
+
+<link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/scripts/jquery-3.1.0.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/scripts/bootstrap.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/scripts/jquery.unobtrusive-ajax.min.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+        $(function () {
+            $.ajaxSetup({ cache: false });
+            $(".bookItem").click(function (e) {
+
+                e.preventDefault();
+                $.get(this.href, function (data) {
+                    $('#dialogContent').html(data);
+                    $('#modDialog').modal('show');
+                });
+            });
+        })
+</script>
+
+
+@section Footer {
+    Cодержимое секции Footer
+}
