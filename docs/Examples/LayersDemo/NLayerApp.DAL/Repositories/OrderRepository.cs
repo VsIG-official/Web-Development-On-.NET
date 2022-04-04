@@ -36,7 +36,7 @@ namespace NLayerApp.DAL.Repositories
         {
             db.Entry(order).State = EntityState.Modified;
         }
-        public IEnumerable<Order> Find(Func<Order, Boolean> predicate)
+        public IEnumerable<Order> Find(Func<Order, bool> predicate)
         {
             return db.Orders.Include(o => o.Phone).Where(predicate).ToList();
         }
