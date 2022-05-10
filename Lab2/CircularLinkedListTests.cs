@@ -29,7 +29,8 @@ public class CircularLinkedListTests
         new object[] { "█Ã░╬ðØ" },
     };
 
-    public static IEnumerable<object[]> IntTwoElementsArrayTestData => new List<object[]>
+    public static IEnumerable<object[]> IntTwoElementsArrayTestData =>
+        new List<object[]>
     {
         new object[] { 0, 10 },
         new object[] { 1, 11 },
@@ -38,7 +39,8 @@ public class CircularLinkedListTests
         new object[] { int.MinValue, int.MinValue + 10 },
     };
 
-    public static IEnumerable<object[]> StringTwoElementsArrayTestData => new List<object[]>
+    public static IEnumerable<object[]> StringTwoElementsArrayTestData =>
+        new List<object[]>
     {
         new object[] { "Паляниця", "Полуниця" },
         new object[] { "Русский военный корабль", "Иди" },
@@ -49,7 +51,8 @@ public class CircularLinkedListTests
         new object[] { "█Ã░╬ðØ", "®ßƒ≡¾Æ" },
     };
 
-    public static IEnumerable<object[]> IntMultipleElementsArrayTestData => new List<object[]>
+    public static IEnumerable<object[]> IntMultipleElementsArrayTestData =>
+        new List<object[]>
     {
         new object[] { 0, 10, 100 },
         new object[] { 1, 11, 111 },
@@ -58,7 +61,8 @@ public class CircularLinkedListTests
         new object[] { int.MinValue, int.MinValue + 10, int.MinValue + 100 },
     };
 
-    public static IEnumerable<object[]> StringMultipleElementsArrayTestData => new List<object[]>
+    public static IEnumerable<object[]> StringMultipleElementsArrayTestData =>
+        new List<object[]>
     {
         new object[] { "Паляниця", "Полуниця", "ОлЕні, Олені" },
         new object[] { "Русский военный корабль", "Иди", "далеко" },

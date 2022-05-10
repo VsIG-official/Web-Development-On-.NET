@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lab1\Lab1.csproj" />
+    <Reference Include="Lab1">
+      <HintPath>..\Libs\Lab1.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -22,9 +22,9 @@ internal class Program
 
     private static void RunAllExamples(Car[] cars)
     {
-        AddExample(cars);
-        RemoveExample(cars);
-        ForeachExample(cars);
+        //AddExample(cars);
+        //RemoveExample(cars);
+        //ForeachExample(cars);
         OtherFeaturesExample(cars);
     }
 
