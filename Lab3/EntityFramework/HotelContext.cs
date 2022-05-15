@@ -13,5 +13,8 @@ namespace Lab3.DAL.EntityFramework
         {
             Database.Initialize(true);
         }
+
+        public HotelContext(string connectionString)
+            : base(connectionString) { }
     }
 }
