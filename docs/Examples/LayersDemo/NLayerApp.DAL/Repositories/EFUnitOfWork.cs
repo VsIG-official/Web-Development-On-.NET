@@ -44,13 +44,13 @@ namespace NLayerApp.DAL.Repositories
 
         public virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
                     db.Dispose();
                 }
-                this.disposed = true;
+                disposed = true;
             }
         }
 

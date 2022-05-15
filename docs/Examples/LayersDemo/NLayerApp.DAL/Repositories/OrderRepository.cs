@@ -14,7 +14,7 @@ namespace NLayerApp.DAL.Repositories
 
         public OrderRepository(MobileContext context)
         {
-            this.db = context;
+            db = context;
         }
 
         public IEnumerable<Order> GetAll()
