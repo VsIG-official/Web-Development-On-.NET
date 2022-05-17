@@ -4,11 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using Lab3.DAL.Entities;
 using Lab3.DAL.EntityFramework;
-using Lab3.DAL.Interfaces;
+using Lab3.DAL.Repositories.Abstract;
 
 namespace Lab3.DAL.Repositories
 {
-    public class RoomRepository : IRepository<RoomEntity>
+    public class RoomRepository : IRoomRepository
     {
         private readonly HotelContext _db;
 
