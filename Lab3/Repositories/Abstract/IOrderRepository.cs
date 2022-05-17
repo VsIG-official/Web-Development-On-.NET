@@ -6,6 +6,6 @@ namespace Lab3.DAL.Repositories.Abstract
 {
     public interface IOrderRepository : IRepository<OrderEntity>
     {
-        List<RoomEntity> GetAllRooms();
+        List<RoomEntity> GetAllRoomsInOrderById(int id);
     }
 }

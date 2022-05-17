@@ -50,5 +50,10 @@ namespace Lab3.DAL.Repositories
         {
             return _db.Users.Where(predicate).ToList();
         }
+
+        public UserEntity GetByLogin(string login)
+        {
+            return _db.Users.FirstOrDefault(u => u.Login == login);
+        }
     }
 }

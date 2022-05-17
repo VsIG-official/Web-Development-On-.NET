@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using Lab3.DAL.Entities;
+using Lab3.DAL.Entities.Enums;
 using Lab3.DAL.EntityFramework;
 using Lab3.DAL.Repositories.Abstract;
 
@@ -49,6 +50,11 @@ namespace Lab3.DAL.Repositories
         public IEnumerable<RoomEntity> Find(Func<RoomEntity, bool> predicate)
         {
             return _db.Rooms.Where(predicate).ToList();
+        }
+
+        public List<RoomEntity> FindAllRoomsByCategory(Category category)
+        {
+            return _db.Rooms.Where(r => r.Category == category).ToList();
         }
     }
 }

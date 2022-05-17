@@ -49,5 +49,10 @@ namespace Lab3.DAL.Repositories
                 _db.Orders.Remove(order);
             }
         }
+
+        public List<RoomEntity> GetAllRoomsInOrderById(int id)
+        {
+            return Get(id).Rooms.ToList();
+        }
     }
 }
