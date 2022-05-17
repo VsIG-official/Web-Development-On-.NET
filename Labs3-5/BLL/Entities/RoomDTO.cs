@@ -1,6 +1,6 @@
 ﻿using BLL.Entities.Abstract;
 
-namespace Lab3.BLL.Entities
+namespace BLL.Entities
 {
     public class RoomDTO : BaseDTO
     {
