@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using Lab3.DAL.Entities;
-using Lab3.DAL.EntityFramework;
-using Lab3.DAL.Repositories.Abstract;
+using DAL.Entities;
+using DAL.EntityFramework;
+using DAL.Repositories.Abstract;
 
-namespace Lab3.DAL.Repositories
+namespace DAL.Repositories
 {
     public class UserRepository : IUserRepository
     {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Lab3.DAL.Entities.Abstract;
+using DAL.Entities.Abstract;
 
-namespace Lab3.DAL.Entities
+namespace DAL.Entities
 {
     public class OrderEntity : BaseEntity
     {

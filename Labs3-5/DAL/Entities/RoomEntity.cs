@@ -1,7 +1,7 @@
-﻿using Lab3.DAL.Entities.Abstract;
-using Lab3.DAL.Entities.Enums;
+﻿using DAL.Entities.Abstract;
+using DAL.Entities.Enums;
 
-namespace Lab3.DAL.Entities
+namespace DAL.Entities
 {
     public class RoomEntity : BaseEntity
     {

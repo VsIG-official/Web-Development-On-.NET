@@ -1,9 +1,9 @@
 ﻿using System;
-using Lab3.DAL.EntityFramework;
-using Lab3.DAL.Interfaces;
-using Lab3.DAL.Repositories.Abstract;
+using DAL.EntityFramework;
+using DAL.Interfaces;
+using DAL.Repositories.Abstract;
 
-namespace Lab3.DAL.Repositories
+namespace DAL.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

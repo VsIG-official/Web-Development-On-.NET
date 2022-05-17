@@ -1,7 +1,7 @@
-﻿using Lab3.DAL.Entities;
-using Lab3.DAL.Interfaces;
+﻿using DAL.Entities;
+using DAL.Interfaces;
 
-namespace Lab3.DAL.Repositories.Abstract
+namespace DAL.Repositories.Abstract
 {
     public interface IUserRepository : IRepository<UserEntity>
     {

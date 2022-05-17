@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
-using Lab3.DAL.Entities;
+using DAL.Entities;
 
-namespace Lab3.DAL.EntityFramework
+namespace DAL.EntityFramework
 {
     public class HotelDbInitializer :
         DropCreateDatabaseIfModelChanges<HotelContext>

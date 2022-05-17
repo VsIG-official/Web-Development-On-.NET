@@ -1,4 +1,4 @@
-﻿namespace Lab3.DAL.Entities.Abstract
+﻿namespace DAL.Entities.Abstract
 {
     public interface IBaseEntity
     {

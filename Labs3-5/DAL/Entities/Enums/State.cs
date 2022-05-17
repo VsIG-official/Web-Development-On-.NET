@@ -1,4 +1,4 @@
-﻿namespace Lab3.DAL.Entities.Enums
+﻿namespace DAL.Entities.Enums
 {
     public enum State
     {
