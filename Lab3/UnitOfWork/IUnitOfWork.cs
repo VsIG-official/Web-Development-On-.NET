@@ -1,13 +1,13 @@
 ﻿using System;
-using Lab3.DAL.Entities;
+using Lab3.DAL.Repositories.Abstract;
 
 namespace Lab3.DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<UserEntity> Users { get; }
-        IRepository<RoomEntity> Rooms { get; }
-        IRepository<OrderEntity> Orders { get; }
+        IUserRepository Users { get; }
+        IRoomRepository Rooms { get; }
+        IOrderRepository Orders { get; }
         void Save();
     }
 }
