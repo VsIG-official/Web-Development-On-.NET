@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelWebsite", "HotelWebsite.csproj", "{010E5727-579A-474B-A9C0-9F1937CECD7A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PL.Console", "PL.Console.csproj", "{010E5727-579A-474B-A9C0-9F1937CECD7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{0C578C37-87C7-4D16-BD76-4E941D2E4DD4}"
 EndProject
