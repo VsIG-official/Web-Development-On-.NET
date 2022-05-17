@@ -5,9 +5,9 @@ namespace Lab3.DAL.EntityFramework
 {
     public class HotelContext : DbContext
     {
-        public DbSet<User> Users { get; set; }
-        public DbSet<Room> Rooms { get; set; }
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<UserEntity> Users { get; set; }
+        public DbSet<RoomEntity> Rooms { get; set; }
+        public DbSet<OrderEntity> Orders { get; set; }
 
         public HotelContext() : base("DBConnection")
         {

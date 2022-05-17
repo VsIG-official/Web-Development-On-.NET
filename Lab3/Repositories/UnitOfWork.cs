@@ -18,7 +18,7 @@ namespace Lab3.DAL.Repositories
         {
             _db = new HotelContext(connectionString);
         }
-        public IRepository<User> Users
+        public IRepository<UserEntity> Users
         {
             get
             {
@@ -28,11 +28,11 @@ namespace Lab3.DAL.Repositories
                 }
 
                 // TODO
-                return (IRepository<User>)_userRepository;
+                return (IRepository<UserEntity>)_userRepository;
             }
         }
 
-        public IRepository<Order> Orders
+        public IRepository<OrderEntity> Orders
         {
             get
             {
@@ -42,11 +42,11 @@ namespace Lab3.DAL.Repositories
                 }
 
                 // TODO
-                return (IRepository<Order>)_orderRepository;
+                return (IRepository<OrderEntity>)_orderRepository;
             }
         }
 
-        public IRepository<Room> Rooms
+        public IRepository<RoomEntity> Rooms
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Lab3.DAL.Repositories
                 }
 
                 // TODO
-                return (IRepository<Room>)_roomRepository;
+                return (IRepository<RoomEntity>)_roomRepository;
             }
         }
 

@@ -1,8 +1,10 @@
-﻿namespace Lab3.DAL.Entities
+﻿using Lab3.DAL.Entities.Abstract;
+using Lab3.DAL.Entities.Enums;
+
+namespace Lab3.DAL.Entities
 {
-    public class Room
+    public class RoomEntity : BaseEntity
     {
-        public int Id { get; set; }
         public Category Category { get; set; }
         public State State { get; set; }
         public decimal Price { get; set; }

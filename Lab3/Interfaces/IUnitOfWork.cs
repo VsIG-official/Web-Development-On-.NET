@@ -5,9 +5,9 @@ namespace Lab3.DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<User> Users { get; }
-        IRepository<Room> Rooms { get; }
-        IRepository<Order> Orders { get; }
+        IRepository<UserEntity> Users { get; }
+        IRepository<RoomEntity> Rooms { get; }
+        IRepository<OrderEntity> Orders { get; }
         void Save();
     }
 }

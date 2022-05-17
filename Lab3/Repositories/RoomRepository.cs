@@ -4,10 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using Lab3.DAL.Entities;
 using Lab3.DAL.EntityFramework;
+using Lab3.DAL.Interfaces;
 
 namespace Lab3.DAL.Repositories
 {
-    public class RoomRepository
+    public class RoomRepository : IRepository<RoomEntity>
     {
         private readonly HotelContext _db;
 
@@ -16,36 +17,36 @@ namespace Lab3.DAL.Repositories
             _db = context;
         }
 
-        public Room Get(int id)
+        public RoomEntity Get(int id)
         {
             return _db.Rooms.Find(id);
         }
 
-        public void Create(Room room)
+        public void Create(RoomEntity room)
         {
             _db.Rooms.Add(room);
         }
 
-        public void Update(Room room)
+        public void Update(RoomEntity room)
         {
             _db.Entry(room).State = EntityState.Modified;
         }
 
         public void Delete(int id)
         {
-            Room room = _db.Rooms.Find(id);
+            RoomEntity room = _db.Rooms.Find(id);
             if (room != null)
             {
                 _db.Rooms.Remove(room);
             }
         }
 
-        public IEnumerable<Room> GetAll()
+        public IEnumerable<RoomEntity> GetAll()
         {
             return _db.Rooms;
         }
 
-        public IEnumerable<Room> Find(Func<Room, bool> predicate)
+        public IEnumerable<RoomEntity> Find(Func<RoomEntity, bool> predicate)
         {
             return _db.Rooms.Where(predicate).ToList();
         }

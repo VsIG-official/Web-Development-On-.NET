@@ -4,10 +4,11 @@ using System.Data.Entity;
 using System.Linq;
 using Lab3.DAL.Entities;
 using Lab3.DAL.EntityFramework;
+using Lab3.DAL.Interfaces;
 
 namespace Lab3.DAL.Repositories
 {
-    public class OrderRepository
+    public class OrderRepository : IRepository<OrderEntity>
     {
         private readonly HotelContext _db;
 
@@ -16,33 +17,33 @@ namespace Lab3.DAL.Repositories
             _db = context;
         }
 
-        public IEnumerable<Order> GetAll()
+        public IEnumerable<OrderEntity> GetAll()
         {
             return _db.Orders.Include(order => order.Id);
         }
         
-        public Order Get(int id)
+        public OrderEntity Get(int id)
         {
             return _db.Orders.Find(id);
         }
 
-        public void Create(Order order)
+        public void Create(OrderEntity order)
         {
             _db.Orders.Add(order);
         }
 
-        public void Update(Order order)
+        public void Update(OrderEntity order)
         {
             _db.Entry(order).State = EntityState.Modified;
         }
-        public IEnumerable<Order> Find(Func<Order, bool> predicate)
+        public IEnumerable<OrderEntity> Find(Func<OrderEntity, bool> predicate)
         {
             return _db.Orders.Include(order => order.Id)
                 .Where(predicate).ToList();
         }
         public void Delete(int id)
         {
-            Order order = _db.Orders.Find(id);
+            OrderEntity order = _db.Orders.Find(id);
             if (order != null)
             {
                 _db.Orders.Remove(order);
