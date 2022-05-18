@@ -10,7 +10,7 @@ namespace BLL.Interfaces
         void UpdateOrder(OrderDTO order);
         OrderDTO GetOrderById(int id);
         void DeleteOrderById(int id);
-        IEnumerable<RoomDTO> GetRooms();
+        IEnumerable<RoomDTO> GetRoomsById(int id);
         decimal GetSumById(int id);
         DateTime GetStartDateById(int id);
         DateTime GetEndDateById(int id);
